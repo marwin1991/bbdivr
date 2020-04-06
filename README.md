@@ -4,13 +4,15 @@ This is my master thesis project to keep source files, configurations and other 
 
 ## installing hyperledger fabric
 
-Developers of this framework made it easy to istall all required dependecies, just do:
 Pre requirements:
 ```
 git
 curl 
 docker
 ```
+
+Developers of this framework made it easy to istall all required dependecies, just do:
+
 
 ```
 curl -sSL https://bit.ly/2ysbOFE | bash -s
