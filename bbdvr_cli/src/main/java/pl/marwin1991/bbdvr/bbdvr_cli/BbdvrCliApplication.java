@@ -1,13 +1,13 @@
-package pl.marwin1991.bbdvr.engine;
+package pl.marwin1991.bbdvr.bbdvr_cli;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BbdvrEngineApplication {
+public class BbdvrCliApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BbdvrEngineApplication.class, args);
+        SpringApplication.run(BbdvrCliApplication.class, args);
     }
 
 }

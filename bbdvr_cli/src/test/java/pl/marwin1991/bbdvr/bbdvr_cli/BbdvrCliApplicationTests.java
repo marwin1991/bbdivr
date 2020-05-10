@@ -1,10 +1,10 @@
-package pl.marwin1991.bbdvr.engine;
+package pl.marwin1991.bbdvr.bbdvr_cli;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BbdvrEngineApplicationTests {
+class BbdvrCliApplicationTests {
 
     @Test
     void contextLoads() {

@@ -11,8 +11,11 @@
     <groupId>pl.marwin1991.bbdvr</groupId>
     <artifactId>bbdvr</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Blockchain based docker vulnerabilities registry</name>
-    <description>TODO</description>
+
+    <packaging>pom</packaging>
+
+    <name>BBDVR</name>
+    <description>Blockchain based docker vulnerabilities registry</description>
 
     <modules>
         <module>bbdvr_engine</module>

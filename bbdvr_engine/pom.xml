@@ -8,7 +8,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>engine</artifactId>
+    <artifactId>bbdvr_engine</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>BBDVR Engine</name>
     <description>BBDVR Engine is a server side application to interact with BBDVR chaincode deployed in Hyperledger Farbic blockchain</description>
