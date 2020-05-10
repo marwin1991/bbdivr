@@ -3,15 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>pl.marwin1991.bbdvr</groupId>
-        <artifactId>bbdvr</artifactId>
+        <groupId>pl.marwin1991.bbdivr</groupId>
+        <artifactId>bbdivr</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bbdvr_engine</artifactId>
+    <artifactId>bbdivr-engine</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>BBDVR Engine</name>
-    <description>BBDVR Engine is a server side application to interact with BBDVR chaincode deployed in Hyperledger Farbic blockchain</description>
+    <name>BBDIVR Engine</name>
+    <description>BBDIVR Engine is a server side application to interact with BBDVR chaincode deployed in Hyperledger Farbic blockchain</description>
 
     <properties>
         <java.version>11</java.version>
