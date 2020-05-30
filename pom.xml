@@ -18,7 +18,9 @@
     <description>Blockchain based docker's images' vulnerabilities registry</description>
 
     <modules>
+        <module>bbdivr-common</module>
         <module>bbdivr-engine</module>
+        <module>bbdivr-clair</module>
         <module>bbdivr-cli</module>
     </modules>
 
@@ -35,6 +37,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>pl.marwin1991.bbdivr</groupId>
+            <artifactId>bbdivr-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
