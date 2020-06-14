@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7b2d11aa-4ace-44ac-8ebb-79f739627825" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/controller/LayerProviderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/model/Layer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/model/LayerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/service/ClairLayerAnalyseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/service/DownloadService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-clair/src/test/java/pl/marwin1991/bbdivr/clair/BbdivrClairApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Feature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/LayerResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/LayerWithVulnerabilities.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Manifest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/ScanResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Severity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Vulnerability.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/provider/TempDirLocationProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/service/LayerAnalyseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/client/DockerClientProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/controller/ScannerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/service/ScannerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/util/FilesUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_clair.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-chaincode/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/Bbdivr.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/Layer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/Vulnerability.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbdivr-engine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/BbdivrEngineApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/BbdivrEngineApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,21 +63,27 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589233082525" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-common\src\main\java\pl\marwin1991\bbdivr\service" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.marwin1991.bbdivr.chaincode" />
       <recent name="pl.marwin1991.bbdivr.clair.model" />
       <recent name="pl.marwin1991.bbdivr.clair.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-common\src\main\java\pl\marwin1991\bbdivr\service" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BbdivrEngineApplication">
@@ -121,7 +122,9 @@
       <workItem from="1589147066585" duration="1340000" />
       <workItem from="1589698414349" duration="595000" />
       <workItem from="1590248501157" duration="1382000" />
-      <workItem from="1590250138447" duration="29023000" />
+      <workItem from="1590250138447" duration="30290000" />
+      <workItem from="1591644290293" duration="587000" />
+      <workItem from="1591644900358" duration="3251000" />
     </task>
     <task id="LOCAL-00001" summary="Some pom fixes ranem from bbdvr to bbdivr">
       <created>1589147179808</created>
@@ -137,18 +140,49 @@
       <option name="project" value="LOCAL" />
       <updated>1589147797480</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added clair as base scan">
+      <created>1590858145640</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1590858145640</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Some pom fixes ranem from bbdvr to bbdivr" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some pom fixes ranem from bbdvr to bbdivr" />
+    <MESSAGE value="Added clair as base scan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added clair as base scan" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="53" key="#Plugins" timestamp="1591644883131">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="53" key="#Plugins/0.0.1536.824@0.0.1536.824" timestamp="1591644883131" />
+    <state x="249" y="0" key="#Project_Structure" timestamp="1591644809932">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1591644809932" />
     <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1590430117365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -161,54 +195,70 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="524" y="115" width="934" height="594" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1590430590948" />
-    <state width="1493" height="232" key="GridCell.Tab.0.bottom" timestamp="1590437445819">
+    <state x="234" y="0" key="CommitChangelistDialog2" timestamp="1590858143782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590437445819" />
-    <state width="1493" height="232" key="GridCell.Tab.0.center" timestamp="1590437445819">
+    <state x="234" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590858143782" />
+    <state x="549" y="113" key="FileChooserDialogImpl" timestamp="1591644455122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590437445819" />
-    <state width="1493" height="232" key="GridCell.Tab.0.left" timestamp="1590437445818">
+    <state x="549" y="113" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591644455122" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1591277649166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590437445818" />
-    <state width="1493" height="232" key="GridCell.Tab.0.right" timestamp="1590437445819">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591277649166" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1591277649165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590437445819" />
-    <state width="1493" height="232" key="GridCell.Tab.1.bottom" timestamp="1590437531229">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591277649165" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1591277649165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590437531229" />
-    <state width="1493" height="232" key="GridCell.Tab.1.center" timestamp="1590437531228">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591277649165" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1591277649165">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1590437531228" />
-    <state width="1493" height="232" key="GridCell.Tab.1.left" timestamp="1590437531227">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591277649165" />
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom" timestamp="1591277649166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1590437531227" />
-    <state width="1493" height="232" key="GridCell.Tab.1.right" timestamp="1590437531229">
+    <state width="1493" height="210" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591277649166" />
+    <state width="1493" height="210" key="GridCell.Tab.1.center" timestamp="1591277649166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1590437531229" />
-    <state width="1493" height="232" key="GridCell.Tab.2.bottom" timestamp="1590437445611">
+    <state width="1493" height="210" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591277649166" />
+    <state width="1493" height="210" key="GridCell.Tab.1.left" timestamp="1591277649166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590437445611" />
-    <state width="1493" height="232" key="GridCell.Tab.2.center" timestamp="1590437445611">
+    <state width="1493" height="210" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591277649166" />
+    <state width="1493" height="210" key="GridCell.Tab.1.right" timestamp="1591277649166">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1590437445611" />
-    <state width="1493" height="232" key="GridCell.Tab.2.left" timestamp="1590437445610">
+    <state width="1493" height="210" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591277649166" />
+    <state width="1493" height="232" key="GridCell.Tab.2.bottom" timestamp="1591277649159">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1590437445610" />
-    <state width="1493" height="232" key="GridCell.Tab.2.right" timestamp="1590437445611">
+    <state width="1493" height="232" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591277649159" />
+    <state width="1493" height="232" key="GridCell.Tab.2.center" timestamp="1591277649159">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="232" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1590437445611" />
+    <state width="1493" height="232" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1591277649159" />
+    <state width="1493" height="232" key="GridCell.Tab.2.left" timestamp="1591277649159">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1591277649159" />
+    <state width="1493" height="232" key="GridCell.Tab.2.right" timestamp="1591277649159">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="232" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1591277649159" />
+    <state x="439" y="116" key="NewModule_or_Project.wizard" timestamp="1591644463983">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1591644463983" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1590858148335">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590858148335" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1590430809427">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -217,44 +267,32 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1590426430428" />
-    <state x="567" y="45" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1590436335498">
+    <state x="567" y="45" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591645085467">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="567" y="45" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1590436335498" />
+    <state x="567" y="45" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1591645085467" />
     <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1590260845809">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1590260845809" />
-    <state x="418" y="74" key="new project wizard" timestamp="1590426098469">
+    <state x="261" y="41" key="new project wizard" timestamp="1591644406513">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="418" y="74" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1590426098469" />
+    <state x="261" y="41" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1591644406513" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1591646888071">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1591646888071" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/service/ScannerService.java</url>
-          <line>52</line>
+          <line>50</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
