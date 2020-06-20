@@ -1,11 +1,13 @@
 package pl.marwin1991.bbdivr.clair.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.marwin1991.bbdivr.clair.model.Layer;
-import pl.marwin1991.bbdivr.clair.model.LayerRequest;
-import pl.marwin1991.bbdivr.model.LayerResponse;
+import pl.marwin1991.bbdivr.clair.converter.ScanResultConverter;
+import pl.marwin1991.bbdivr.clair.model.ClairLayerScanData;
+import pl.marwin1991.bbdivr.clair.model.ClairLayerScanRequest;
+import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
 import pl.marwin1991.bbdivr.model.ScanResult;
 import pl.marwin1991.bbdivr.service.LayerAnalyseService;
 
@@ -16,61 +18,64 @@ import java.util.List;
 @Service
 public class ClairLayerAnalyseService implements LayerAnalyseService {
 
-    private static final String postLayerURI = "/v1/layers";
+    private static final String POST_LAYER_URI = "/v1/layers";
     private static final String CLAIR_SERVER_URL = "http://localhost:6060";
-    private static final String getLayerFeaturesURI = "/v1/layers/%s?features&vulnerabilities";
+    private static final String GET_LAYER_FEATURES_URI = "/v1/layers/%s?features&vulnerabilities";
+    private static final String LOCAL_URI_TO_GET_LAYER = "http://host.docker.internal:8080/layers/";
+
+
+    private final ScanResultConverter converter;
+
+    @Autowired
+    public ClairLayerAnalyseService(ScanResultConverter converter) {
+        this.converter = converter;
+    }
 
     @Override
     public ScanResult analyse(List<String> layerIds) {
-        String tmpPath = "http://host.docker.internal:8080/layers/";
         for (int i = 0; i < layerIds.size(); i++) {
             log.info("Analyzing " + layerIds.get(i));
 
             if (i > 0) {
-                analyzeLayer(tmpPath + "/" + layerIds.get(i), layerIds.get(i), layerIds.get(i - 1));
+                analyzeLayer(layerIds.get(i), layerIds.get(i - 1));
             } else {
-                analyzeLayer(tmpPath + "/" + layerIds.get(i), layerIds.get(i), "");
+                analyzeLayer(layerIds.get(i), "");
             }
         }
 
-        List<LayerResponse> results = new LinkedList<>();
-        results.addAll(fetchVulnerabilities(layerIds));
-
-        return ScanResult.builder()
-                .result(results)
-                .build();
+        return converter.convert(fetchVulnerabilities(layerIds));
     }
 
-    private List<LayerResponse> fetchVulnerabilities(List<String> layerIds) {
-        List<LayerResponse> results = new LinkedList<>();
+    private List<ClairLayerScanResponse> fetchVulnerabilities(List<String> layerIds) {
+        List<ClairLayerScanResponse> results = new LinkedList<>();
         results.add(getLayerVulnerabilities(layerIds.get(layerIds.size() - 1)));
         return results;
     }
 
-    private String analyzeLayer(String bbdivrUrl, String layer, String prevLayer) {
+    private void analyzeLayer(String layer, String prevLayer) {
         try {
-            LayerRequest layerRequest = LayerRequest.builder()
-                    .layer(Layer.builder()
+            ClairLayerScanRequest layerRequest = ClairLayerScanRequest.builder()
+                    .layer(ClairLayerScanData.builder()
                             .name(layer)
-                            .path(bbdivrUrl)
+                            .path(LOCAL_URI_TO_GET_LAYER + layer)
                             .parentName(prevLayer)
                             .format("Docker")
                             .build())
                     .build();
 
 
-            String response = new RestTemplate().postForObject(CLAIR_SERVER_URL + postLayerURI, layerRequest, String.class);
-            return response.replaceAll("\\\"", "\"");
+            new RestTemplate().postForObject(CLAIR_SERVER_URL + POST_LAYER_URI, layerRequest, String.class);
         } catch (Exception e) {
-            return "";
+            log.error("Could not send layer info to clair", e);
         }
     }
 
-    private LayerResponse getLayerVulnerabilities(String layerId) {
+    private ClairLayerScanResponse getLayerVulnerabilities(String layerId) {
         try {
-            return new RestTemplate().getForObject(CLAIR_SERVER_URL + getLayerFeaturesURI.replace("%s", layerId), LayerResponse.class);
+            return new RestTemplate().getForObject(CLAIR_SERVER_URL + GET_LAYER_FEATURES_URI.replace("%s", layerId), ClairLayerScanResponse.class);
         } catch (Exception e) {
-            return new LayerResponse();
+            log.error("Could not get layer info from clair", e);
+            return new ClairLayerScanResponse();
         }
     }
 

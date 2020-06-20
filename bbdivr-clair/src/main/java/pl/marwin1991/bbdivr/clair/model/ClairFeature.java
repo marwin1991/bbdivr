@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.model;
+package pl.marwin1991.bbdivr.clair.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Feature {
+public class ClairFeature {
     @JsonProperty("Name")
     private String name;
 
@@ -20,7 +20,7 @@ public class Feature {
     private String version;
 
     @JsonProperty("Vulnerabilities")
-    private List<Vulnerability> vulnerabilities;
+    private List<ClairVulnerability> vulnerabilities;
 
     @JsonProperty("AddedBy")
     private String addedBy;

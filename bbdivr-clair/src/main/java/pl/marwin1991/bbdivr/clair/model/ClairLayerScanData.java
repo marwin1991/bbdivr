@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Layer {
+public class ClairLayerScanData {
     @JsonProperty("Name")
     private String name;
 

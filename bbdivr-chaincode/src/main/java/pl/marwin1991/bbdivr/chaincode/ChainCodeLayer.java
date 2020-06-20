@@ -1,5 +1,6 @@
 package pl.marwin1991.bbdivr.chaincode;
 
+import com.google.gson.Gson;
 import lombok.Data;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
@@ -9,7 +10,7 @@ import java.util.List;
 
 @Data
 @DataType
-public class Layer {
+public class ChainCodeLayer {
 
     @Property
     private String id;
@@ -27,5 +28,10 @@ public class Layer {
     private Integer modifyIndex;
 
     @Property
-    private List<Vulnerability> vulnerabilities;
+    private List<ChainCodeVulnerability> vulnerabilities;
+
+    public String toJson() {
+        Gson jsonConverter = new Gson();
+        return jsonConverter.toJson(this);
+    }
 }

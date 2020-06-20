@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.model;
+package pl.marwin1991.bbdivr.clair.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class LayerWithVulnerabilities {
+public class ClairLayerScanResult {
     @JsonProperty("Name")
     private String name;
 
@@ -17,7 +17,7 @@ public class LayerWithVulnerabilities {
     private String indexByVersion;
 
     @JsonProperty("Features")
-    private List<Feature> features;
+    private List<ClairFeature> features;
 
     @JsonProperty("ParentName")
     private String parentName;

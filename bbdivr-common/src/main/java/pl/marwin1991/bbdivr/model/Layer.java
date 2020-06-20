@@ -7,10 +7,10 @@ import java.util.List;
 
 @Data
 @Builder
-public class ScanResult {
+public class Layer {
 
-    private String scanToolName;
-
-    private List<Layer> layers;
+    private String id;
+    private String parentId;
+    private List<Vulnerability> vulnerabilities;
 
 }
