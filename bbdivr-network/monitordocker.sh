@@ -29,3 +29,9 @@ docker run -d --name="logspout" \
 	gliderlabs/logspout
 sleep 3
 curl http://127.0.0.1:${PORT}/logs
+
+### WINDOWS 
+### CMD 
+### docker run -d --name="logspout" --volume=/var/run/docker.sock:/var/run/docker.sock --publish=127.0.0.1:8000:80 --network net_test gliderlabs/logspout
+### curl http://127.0.0.1:8000/logs
+### now wait :)
