@@ -13,3 +13,4 @@ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.examp
 #
 cp ../bbdivr-chaincode/target/*jar-with-dependencies.jar ./bbdivr-chaincode-tmp
 peer lifecycle chaincode package bbdivr_$1.tar.gz --path ./bbdivr-chaincode-tmp --lang java --label bbdivr_$1
+rm -f -r bbdivr-chaincode-tmp || true
