@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
-import pl.marwin1991.bbdivr.provider.TempDirLocationProvider;
+import pl.marwin1991.bbdivr.clair.provider.TempDirLocationProvider;
 
 import java.net.MalformedURLException;
 import java.nio.file.Path;

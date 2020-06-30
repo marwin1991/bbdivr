@@ -1,9 +1,9 @@
 package pl.marwin1991.bbdivr.clair;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringBootConfiguration;
 
-@SpringBootTest
+@SpringBootConfiguration
 class BbdivrClairApplicationTests {
 
     @Test

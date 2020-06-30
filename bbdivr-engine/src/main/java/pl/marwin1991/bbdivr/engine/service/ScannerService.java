@@ -9,12 +9,12 @@ import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.marwin1991.bbdivr.clair.provider.TempDirLocationProvider;
 import pl.marwin1991.bbdivr.clair.service.ClairLayerAnalyseService;
 import pl.marwin1991.bbdivr.engine.client.DockerClientProvider;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
 import pl.marwin1991.bbdivr.model.Manifest;
 import pl.marwin1991.bbdivr.model.ScanResult;
-import pl.marwin1991.bbdivr.provider.TempDirLocationProvider;
 
 import java.io.IOException;
 import java.io.InputStream;
