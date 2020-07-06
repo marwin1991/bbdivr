@@ -137,13 +137,13 @@ public final class BbdivrChainCode implements ContractInterface {
 
 
     /**
-     * Retrieves every layers (not recommended, use with pagination).
+     * Retrieves page of layers.
      *
      * @param ctx the transaction context
      * @return page containing layers found on the ledger
      */
     @Transaction()
-    public ChainCodePageLayers queryAllLayers(final Context ctx, final String pageId, final String pageSize) {
+    public ChainCodePageLayers queryPagedLayers(final Context ctx, final String pageId, final String pageSize) {
         ChaincodeStub stub = ctx.getStub();
 
         final String startKey = "";
@@ -164,8 +164,10 @@ public final class BbdivrChainCode implements ContractInterface {
 
         pageLayers.setPageSize(pageSizeInt - 1);
 
-        //removes last element, as it is returned only to get bookmark
-        layers.remove(layers.size() - 1);
+        //removes last element if exist, as it is returned only to get bookmark
+        if (layers.size() > 0)
+            layers.remove(layers.size() - 1);
+
         pageLayers.setLayers(layers);
 
         return pageLayers;
