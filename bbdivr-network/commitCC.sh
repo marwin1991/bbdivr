@@ -1,6 +1,8 @@
 # Usage ./commitCC.sh 1.0 1
 #
 
+export FABRIC_CFG_PATH=$PWD/../config/
+
 VERSION=$1
 SEQ=$2
 

@@ -22,8 +22,11 @@
     <list default="true" id="7b2d11aa-4ace-44ac-8ebb-79f739627825" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/BbdivrChainCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/BbdivrChainCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodePageLayers.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodePageLayers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbdivr-network/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/approveCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/approveCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/commitCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/commitCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/installCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/installCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/packageCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/packageCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/testCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/testCC.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +132,7 @@
       <workItem from="1591644290293" duration="587000" />
       <workItem from="1591644900358" duration="3251000" />
       <workItem from="1592120813789" duration="32112000" />
+      <workItem from="1594068152026" duration="2490000" />
     </task>
     <task id="LOCAL-00001" summary="Some pom fixes ranem from bbdvr to bbdivr">
       <created>1589147179808</created>
@@ -193,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593554422887</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="chaincode improvements">
+      <created>1594068216951</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1594068216952</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +231,8 @@
     <MESSAGE value="Chaincode model and some Clair improvements" />
     <MESSAGE value="Blockchain network model" />
     <MESSAGE value="chaincode scripts" />
-    <option name="LAST_COMMIT_MESSAGE" value="chaincode scripts" />
+    <MESSAGE value="chaincode improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="chaincode improvements" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -254,30 +266,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="274" y="151" width="934" height="594" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1592684852671" />
-    <state x="234" y="0" key="CommitChangelistDialog2" timestamp="1593554422443">
+    <state x="234" y="0" key="CommitChangelistDialog2" timestamp="1594068216371">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="234" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593554422443" />
+    <state x="234" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1594068216371" />
     <state x="549" y="113" key="FileChooserDialogImpl" timestamp="1591644455122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="113" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591644455122" />
-    <state width="1493" height="259" key="GridCell.Tab.0.bottom" timestamp="1593802363527">
+    <state width="1493" height="259" key="GridCell.Tab.0.bottom" timestamp="1594070319191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1593802363527" />
-    <state width="1493" height="259" key="GridCell.Tab.0.center" timestamp="1593802363527">
+    <state width="1493" height="259" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594070319191" />
+    <state width="1493" height="259" key="GridCell.Tab.0.center" timestamp="1594070319191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1593802363527" />
-    <state width="1493" height="259" key="GridCell.Tab.0.left" timestamp="1593802363527">
+    <state width="1493" height="259" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594070319191" />
+    <state width="1493" height="259" key="GridCell.Tab.0.left" timestamp="1594070319191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1593802363527" />
-    <state width="1493" height="259" key="GridCell.Tab.0.right" timestamp="1593802363527">
+    <state width="1493" height="259" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594070319191" />
+    <state width="1493" height="259" key="GridCell.Tab.0.right" timestamp="1594070319191">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="259" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1593802363527" />
+    <state width="1493" height="259" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594070319191" />
     <state width="1493" height="234" key="GridCell.Tab.1.bottom" timestamp="1593802363509">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -314,10 +326,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1591644463983" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1593554429097">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1594068220908">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593554429097" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1594068220908" />
     <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1592684778534">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

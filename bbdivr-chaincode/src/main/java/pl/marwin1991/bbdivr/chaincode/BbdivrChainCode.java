@@ -7,7 +7,6 @@ import org.hyperledger.fabric.contract.annotation.*;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.KeyValue;
-import org.hyperledger.fabric.shim.ledger.QueryResultsIterator;
 import org.hyperledger.fabric.shim.ledger.QueryResultsIteratorWithMetadata;
 
 import java.util.LinkedList;
@@ -114,30 +113,10 @@ public final class BbdivrChainCode implements ContractInterface {
         return layer;
     }
 
-    /**
-     * Retrieves every layers (not recommended, use with pagination).
-     *
-     * @param ctx the transaction context
-     * @return list of layers found on the ledger
-     */
-    @Transaction()
-    public List<ChainCodeLayer> queryAllLayers(final Context ctx) {
-        ChaincodeStub stub = ctx.getStub();
-
-        final String startKey = "";
-        final String endKey = "";
-
-        List<ChainCodeLayer> layers = new LinkedList<>();
-        QueryResultsIterator<KeyValue> results = stub.getStateByRange(startKey, endKey);
-
-        results.forEach(r -> layers.add(jsonConverter.fromJson(r.getStringValue(), ChainCodeLayer.class)));
-
-        return layers;
-    }
-
 
     /**
      * Retrieves page of layers.
+     * To get first page pageId should be empty string
      *
      * @param ctx the transaction context
      * @return page containing layers found on the ledger

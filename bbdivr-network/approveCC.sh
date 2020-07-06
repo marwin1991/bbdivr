@@ -5,6 +5,8 @@ CC_PACKAGE_ID=$1
 VERSION=$2
 SEQ=$3
 
+export FABRIC_CFG_PATH=$PWD/../config/
+
 # approve as org1
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_LOCALMSPID="Org1MSP"

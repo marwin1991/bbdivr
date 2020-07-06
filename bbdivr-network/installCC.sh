@@ -1,5 +1,7 @@
 # Usage ./packageCC.sh 1
 
+export FABRIC_CFG_PATH=$PWD/../config/
+
 # install on first peer
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_LOCALMSPID="Org1MSP"
