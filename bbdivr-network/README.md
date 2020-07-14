@@ -1,9 +1,7 @@
 ## Running the bbdvir network
 
 ```
-./network.sh down
-
-./network.sh up
+./start.sh
 
 ./createChannel.sh
 
