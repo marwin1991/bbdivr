@@ -14,3 +14,11 @@
 ./commitCC.sh 1.0 1
 
 ./testCC.sh
+
+``` 
+
+or
+
+```
+./startAll.sh
+```
