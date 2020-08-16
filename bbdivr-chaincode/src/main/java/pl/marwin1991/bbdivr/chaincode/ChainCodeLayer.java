@@ -34,4 +34,9 @@ public class ChainCodeLayer {
         Gson jsonConverter = new Gson();
         return jsonConverter.toJson(this);
     }
+
+    public static ChainCodeLayer fromJson(String json) {
+        Gson jsonConverter = new Gson();
+        return jsonConverter.fromJson(json, ChainCodeLayer.class);
+    }
 }
