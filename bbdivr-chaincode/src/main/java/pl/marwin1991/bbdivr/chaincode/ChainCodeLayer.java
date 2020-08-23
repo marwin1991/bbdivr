@@ -1,6 +1,7 @@
 package pl.marwin1991.bbdivr.chaincode;
 
 import com.google.gson.Gson;
+import lombok.Builder;
 import lombok.Data;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
@@ -9,6 +10,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 @Data
+@Builder
 @DataType
 public class ChainCodeLayer {
 

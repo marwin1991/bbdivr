@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.engine.controller;
+package pl.marwin1991.bbdivr.engine.chaincode.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.marwin1991.bbdivr.engine.chaincode.enroll.EnrollService;
-import pl.marwin1991.bbdivr.engine.model.EnrollmentStatus;
+import pl.marwin1991.bbdivr.engine.chaincode.model.EnrollmentStatus;
 
 @RestController
 @RequestMapping("/enroll")

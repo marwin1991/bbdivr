@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+spring-shell.log
 
 ### NetBeans ###
 /nbproject/private/

@@ -43,12 +43,20 @@ public class ClairLayerAnalyseService implements LayerAnalyseService {
             }
         }
 
+        log.info("Finished analysing");
+
         return converter.convert(fetchVulnerabilities(layerIds));
     }
 
     private List<ClairLayerScanResponse> fetchVulnerabilities(List<String> layerIds) {
         List<ClairLayerScanResponse> results = new LinkedList<>();
-        results.add(getLayerVulnerabilities(layerIds.get(layerIds.size() - 1)));
+//        for(int i=0; i < layerIds.size(); i++) {
+//            ClairLayerScanResponse response = getLayerVulnerabilities(layerIds.get(i));
+//        }
+
+        layerIds.forEach(id -> {
+            results.add(getLayerVulnerabilities(id));
+        });
         return results;
     }
 

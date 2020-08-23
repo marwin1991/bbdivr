@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.engine.client;
+package pl.marwin1991.bbdivr.client;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.DockerCmdExecFactory;
