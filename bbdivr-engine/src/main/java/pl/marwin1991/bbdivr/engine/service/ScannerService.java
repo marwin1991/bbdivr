@@ -37,7 +37,6 @@ public class ScannerService {
         Path tmpPath = FilesUtils.createTmpPath();
         try {
             tempDirLocationProvider.addPath(tmpPath);
-            imageName = "libamtrack/libamtrackforjs:latest"; //TODO remove
             DockerClient client = dockerClientProvider.getClient();
 
             InputStream inputStream = client.saveImageCmd(imageName).exec();

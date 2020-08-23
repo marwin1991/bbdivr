@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ListImageCommand {
 
-    private static final int NUMBER_OF_COLUMNS = 2;
+    private static final int NUMBER_OF_COLUMNS = 3;
     private final DockerClientProvider dockerClientProvider;
 
     @ShellMethod("List docker images in local repository")
@@ -35,9 +35,19 @@ public class ListImageCommand {
         int counter = 0;
         for (Image i : imageList) {
             sampleData[counter] = new String[]{
+                    i.getId().replace("sha256:", "").substring(0, 20),
                     Arrays.toString(Arrays.stream(i.getRepoTags())
-                            .map(s -> s.substring(0, s.length() > 60 ? 60 : s.length() - 1))
-                            .toArray(String[]::new)),
+                            .map(s -> {
+                                if (s.length() > 30) {
+                                    return s.substring(0, 28) + "...";
+                                } else {
+                                    return s;
+                                }
+                            })
+                            .toArray(String[]::new))
+                            .replace("[", "")
+                            .replace("]", "")
+                            .replace(",", ""),
 
                     LocalDateTime.ofEpochSecond(i.getCreated(), 0, ZoneOffset.UTC).format(formatter)
             };
