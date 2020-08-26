@@ -1,6 +1,8 @@
-## Running the bbdvir network
+## Running the bbdivr network
 
 ```
+rm -r ../wallet
+
 ./start.sh
 
 ./createChannel.sh

@@ -15,7 +15,7 @@ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org1.examp
 export CORE_PEER_ADDRESS=localhost:7051
 
 peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
-	--channelID bbdivr-channel --name bbdvir --version $VERSION --package-id $CC_PACKAGE_ID --sequence $SEQ --tls \
+	--channelID bbdivr-channel --name bbdivr --version $VERSION --package-id $CC_PACKAGE_ID --sequence $SEQ --tls \
 	--cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 	
 # approve as org2
@@ -26,5 +26,5 @@ export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org2.examp
 export CORE_PEER_ADDRESS=localhost:9051
 
 peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com \
-	--channelID bbdivr-channel --name bbdvir --version $VERSION --package-id $CC_PACKAGE_ID --sequence $SEQ --tls \
+	--channelID bbdivr-channel --name bbdivr --version $VERSION --package-id $CC_PACKAGE_ID --sequence $SEQ --tls \
 	--cafile ${PWD}/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem

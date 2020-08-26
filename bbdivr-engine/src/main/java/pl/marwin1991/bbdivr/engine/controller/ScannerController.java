@@ -20,8 +20,9 @@ public class ScannerController {
         this.scannerService = scannerService;
     }
 
-    @GetMapping("/{imageName}")
-    private ResponseEntity<ScanResult> scan(@PathVariable String imageName) {
-        return ResponseEntity.ok(scannerService.scan(imageName));
+    @GetMapping("/{imageRepo}/{imageName}")
+    private ResponseEntity<ScanResult> scan(@PathVariable String imageRepo, @PathVariable String imageName) {
+        String finalName = imageRepo + "/" + imageName;
+        return ResponseEntity.ok(scannerService.scan(finalName));
     }
 }

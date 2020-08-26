@@ -20,8 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b2d11aa-4ace-44ac-8ebb-79f739627825" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/client/EngineClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/command/EnrollCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/command/ScanCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/configuration/RestTemplateConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/ListImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/ListImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/BbdivrChainCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/BbdivrChainCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodeLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodeLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodeVulnerability.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-chaincode/src/main/java/pl/marwin1991/bbdivr/chaincode/ChainCodeVulnerability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-clair/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-clair/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/converter/ScanResultConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/converter/ScanResultConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/service/ClairLayerAnalyseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-clair/src/main/java/pl/marwin1991/bbdivr/clair/service/ClairLayerAnalyseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-cli/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-cli/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/ListImageCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/command/ListImageCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-cli/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-cli/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-common/src/main/java/pl/marwin1991/bbdivr/model/Layer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/controller/EnrollController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/controller/EnrollController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/converter/RequestToChainCodeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/converter/RequestToChainCodeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/enroll/EnrollService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/enroll/EnrollService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/layer/LayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/layer/LayerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/model/AddLayerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/model/AddLayerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/model/EnrollmentStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/model/EnrollmentStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/model/VulnerabilityDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/controller/ScannerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/controller/ScannerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/service/ScannerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/service/ScannerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/approveCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/approveCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/commitCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/commitCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/docker/docker-compose-test-net.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/docker/docker-compose-test-net.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/start.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/startAll.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/startAll.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bbdivr-network/testCC.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bbdivr-network/testCC.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,23 +108,24 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="pl.marwin1991.bbdivr" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-network" />
-      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-common\src\main\java\pl\marwin1991\bbdivr\service" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="pl.marwin1991.bbdivr.engine.chaincode.model" />
-      <recent name="pl.marwin1991.bbdivr.clair.provider" />
-      <recent name="pl.marwin1991.bbdivr.model" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="pl.marwin1991.bbdivr.engine.chaincode.model" />
       <recent name="pl.marwin1991.bbdivr.chaincode" />
       <recent name="pl.marwin1991.bbdivr.clair.model" />
       <recent name="pl.marwin1991.bbdivr.clair.service" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="pl.marwin1991.bbdivr" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pl.marwin1991.bbdivr.cli.command" />
+      <recent name="pl.marwin1991.bbdivr.engine.chaincode.model" />
+      <recent name="pl.marwin1991.bbdivr.clair.provider" />
+      <recent name="pl.marwin1991.bbdivr.model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-network" />
+      <recent name="D:\blockchain-based-docker-images-vulnerabilities-registry\bbdivr-common\src\main\java\pl\marwin1991\bbdivr\service" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -100,7 +135,7 @@
       <command value="mvn dependency:tree " />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BbdivrCliApplication">
+  <component name="RunManager" selected="Spring Boot.BbdivrEngineApplication">
     <configuration name="BbdivrClairApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bbdivr-clair" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="pl.marwin1991.bbdivr.clair.BbdivrClairApplication" />
@@ -144,7 +179,13 @@
       <workItem from="1596484706512" duration="2488000" />
       <workItem from="1596743287175" duration="3231000" />
       <workItem from="1597587563242" duration="13260000" />
-      <workItem from="1598211041468" duration="3970000" />
+      <workItem from="1598211041468" duration="17081000" />
+      <workItem from="1598303106224" duration="2925000" />
+      <workItem from="1598373301384" duration="1979000" />
+      <workItem from="1598382592089" duration="3188000" />
+      <workItem from="1598386262526" duration="691000" />
+      <workItem from="1598387167313" duration="7560000" />
+      <workItem from="1598469240437" duration="5745000" />
     </task>
     <task id="LOCAL-00001" summary="Some pom fixes ranem from bbdvr to bbdivr">
       <created>1589147179808</created>
@@ -258,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598213635950</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="removed harcoded image name">
+      <created>1598215063564</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1598215063564</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,7 +340,8 @@
     <MESSAGE value="interaction with chaincode from bdvir modules" />
     <MESSAGE value="fixed problem with jar hell due to bouncy castle pkix imports" />
     <MESSAGE value="implemented printing images using shell bash" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented printing images using shell bash" />
+    <MESSAGE value="removed harcoded image name" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed harcoded image name" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -306,10 +355,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1591644809932" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1597855295620">
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1598290070332">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1597855295620" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1598290070332" />
     <state x="290" y="336" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1597854869597">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -322,70 +371,70 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="178" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1592686103074" />
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598213469798">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598288251466">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598213469798" />
-    <state x="274" y="151" width="934" height="594" key="#xdebugger.evaluate" timestamp="1592684852671">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598288251466" />
+    <state x="274" y="346" width="934" height="399" key="#xdebugger.evaluate" timestamp="1598296274794">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="274" y="151" width="934" height="594" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1592684852671" />
-    <state x="59" y="0" key="CommitChangelistDialog2" timestamp="1598213635134">
+    <state x="274" y="346" width="934" height="399" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1598296274794" />
+    <state x="59" y="0" key="CommitChangelistDialog2" timestamp="1598215062987">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="59" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598213635134" />
+    <state x="59" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598215062987" />
     <state x="549" y="113" key="FileChooserDialogImpl" timestamp="1591644455122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="113" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591644455122" />
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom" timestamp="1598215000487">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598215000487" />
-    <state width="1493" height="213" key="GridCell.Tab.0.center" timestamp="1598215000487">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1598474606770">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598215000487" />
-    <state width="1493" height="213" key="GridCell.Tab.0.left" timestamp="1598215000487">
+    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598474606770" />
+    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1598474606769">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598215000487" />
-    <state width="1493" height="213" key="GridCell.Tab.0.right" timestamp="1598215000487">
+    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598474606769" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1598474606771">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598215000487" />
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom" timestamp="1598215000488">
+    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598474606771" />
+    <state width="1493" height="203" key="GridCell.Tab.1.bottom" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598215000488" />
-    <state width="1493" height="213" key="GridCell.Tab.1.center" timestamp="1598215000488">
+    <state width="1493" height="203" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.1.center" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598215000488" />
-    <state width="1493" height="213" key="GridCell.Tab.1.left" timestamp="1598215000488">
+    <state width="1493" height="203" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.1.left" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598215000488" />
-    <state width="1493" height="213" key="GridCell.Tab.1.right" timestamp="1598215000488">
+    <state width="1493" height="203" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.1.right" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="213" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598215000488" />
-    <state width="1493" height="234" key="GridCell.Tab.2.bottom" timestamp="1598214233353">
+    <state width="1493" height="203" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.2.bottom" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="234" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598214233353" />
-    <state width="1493" height="234" key="GridCell.Tab.2.center" timestamp="1598214233353">
+    <state width="1493" height="203" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.2.center" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="234" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1598214233353" />
-    <state width="1493" height="234" key="GridCell.Tab.2.left" timestamp="1598214233353">
+    <state width="1493" height="203" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.2.left" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="234" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1598214233353" />
-    <state width="1493" height="234" key="GridCell.Tab.2.right" timestamp="1598214233353">
+    <state width="1493" height="203" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
+    <state width="1493" height="203" key="GridCell.Tab.2.right" timestamp="1598474606772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="234" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1598214233353" />
+    <state width="1493" height="203" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1598474606772" />
     <state x="299" y="67" key="Maven.ArtifactSearchDialog" timestamp="1598211300296">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -394,22 +443,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="439" y="116" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1591644463983" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1598213641802">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1598215065546">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598213641802" />
-    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1592684778534">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598215065546" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup" timestamp="1598389153312">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1592684778534" />
+    <state width="775" height="419" key="XDebugger.FullValuePopup/0.0.1536.824@0.0.1536.824" timestamp="1598389153312" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1590426430428">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1590426430428" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1597589747579">
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1598291450852">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1597589747579" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1598291450852" />
     <state x="567" y="45" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1597855286465">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -418,10 +467,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="578" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1597589079352" />
-    <state x="478" y="0" width="579" height="824" key="find.popup" timestamp="1597854850307">
+    <state x="478" y="0" width="794" height="824" key="find.popup" timestamp="1598391855216">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="478" y="0" width="579" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597854850307" />
+    <state x="478" y="0" width="794" height="824" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1598391855216" />
     <state x="261" y="41" key="new project wizard" timestamp="1591644406513">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -430,9 +479,35 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1597590461069" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1597589891144">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598388031218">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1597589891144" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598388031218" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/client/EngineClient.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bbdivr-cli/src/main/java/pl/marwin1991/bbdivr/cli/client/EngineClient.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/service/ScannerService.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bbdivr-engine/src/main/java/pl/marwin1991/bbdivr/engine/chaincode/layer/LayerService.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

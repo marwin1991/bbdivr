@@ -11,8 +11,8 @@ import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
 import pl.marwin1991.bbdivr.model.ScanResult;
 import pl.marwin1991.bbdivr.service.LayerAnalyseService;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -49,15 +49,7 @@ public class ClairLayerAnalyseService implements LayerAnalyseService {
     }
 
     private List<ClairLayerScanResponse> fetchVulnerabilities(List<String> layerIds) {
-        List<ClairLayerScanResponse> results = new LinkedList<>();
-//        for(int i=0; i < layerIds.size(); i++) {
-//            ClairLayerScanResponse response = getLayerVulnerabilities(layerIds.get(i));
-//        }
-
-        layerIds.forEach(id -> {
-            results.add(getLayerVulnerabilities(id));
-        });
-        return results;
+        return layerIds.stream().map(this::getLayerVulnerabilities).collect(Collectors.toList());
     }
 
     private void analyzeLayer(String layer, String prevLayer) {

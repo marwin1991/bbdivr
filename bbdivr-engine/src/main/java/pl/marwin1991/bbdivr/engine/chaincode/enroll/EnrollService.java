@@ -55,6 +55,11 @@ public class EnrollService {
         log.info("Successfully enrolled user \"" + ADMIN_USER + "\" and imported it into the wallet");
     }
 
+    public boolean isEnrolled() throws IOException {
+        Wallet wallet = walletService.getWallet();
+        return wallet.get(APP_USER) != null;
+    }
+
     public void registerUser() throws Exception {
         HFCAClient caClient = getCaClient();
         Wallet wallet = walletService.getWallet();

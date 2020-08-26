@@ -14,7 +14,7 @@
 
     <packaging>pom</packaging>
 
-    <name>BBDIVR</name>
+    <name>bbdivr</name>
     <description>Blockchain based docker's images' vulnerabilities registry</description>
 
     <modules>

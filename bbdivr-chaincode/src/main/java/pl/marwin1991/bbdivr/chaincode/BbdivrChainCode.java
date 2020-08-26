@@ -13,10 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Contract(
-        name = "BBDIVR",
+        name = "bbdivr",
         info = @Info(
-                title = "BBDIVR contract",
-                description = "BBDIVR contract to store and manage docker images vulnerabilities",
+                title = "bbdivr contract",
+                description = "bbdivr contract to store and manage docker images vulnerabilities",
                 version = "1.0.0-SNAPSHOT",
                 license = @License(
                         name = "Apache 2.0 License",
@@ -49,6 +49,7 @@ public final class BbdivrChainCode implements ContractInterface {
      * @param layerId the layerId
      * @return the Car found on the ledger if there was one
      */
+
     @Transaction()
     public List<ChainCodeLayer> queryLayerWithParents(final Context ctx, final String layerId) {
         List<ChainCodeLayer> layers = new LinkedList<>();
@@ -76,10 +77,13 @@ public final class BbdivrChainCode implements ContractInterface {
     @Transaction()
     public ChainCodeLayer addLayer(final Context ctx, final String layerId, final String parentLayerId, final String layerAsJson) {
         ChaincodeStub stub = ctx.getStub();
-        checkIfLayerExist(ctx, layerId);
 
-        if (!parentLayerId.isEmpty())
-            checkIfLayerExist(ctx, parentLayerId);
+        //check if layer already exists
+        getLayer(ctx, layerId, false);
+
+        if (!parentLayerId.isEmpty()) {
+            getLayer(ctx, parentLayerId, true);
+        }
 
         stub.putStringState(layerId, layerAsJson);
 
@@ -99,15 +103,15 @@ public final class BbdivrChainCode implements ContractInterface {
     public ChainCodeLayer addVulnerability(final Context ctx, final String layerId, final String vulnerabilityAsJson) {
         ChaincodeStub stub = ctx.getStub();
         ChainCodeLayer layer = getExistingLayer(ctx, layerId);
-        ChainCodeVulnerability vulnerability = jsonConverter.fromJson(vulnerabilityAsJson, ChainCodeVulnerability.class);
+        //ChainCodeVulnerability vulnerability = jsonConverter.fromJson(vulnerabilityAsJson, ChainCodeVulnerability.class);
 
-        if (layer.getVulnerabilities().contains(vulnerability)) {
-            String errorMessage = String.format("Layer with id: %s already has this vulnerability %s", layerId, vulnerability.getVulnerabilityName());
+        if (layer.getVulnerabilities().contains(vulnerabilityAsJson)) {
+            String errorMessage = String.format("Layer with id: %s already has this vulnerability %s", layerId, vulnerabilityAsJson);
             System.out.println(errorMessage);
             throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.VULNERABILITY_ALREADY_EXIST.toString());
         }
 
-        layer.getVulnerabilities().add(vulnerability);
+        layer.getVulnerabilities().add(vulnerabilityAsJson);
         stub.putStringState(layerId, jsonConverter.toJson(layer));
 
         return layer;
@@ -153,31 +157,40 @@ public final class BbdivrChainCode implements ContractInterface {
     }
 
     private ChainCodeLayer getExistingLayer(final Context ctx, final String layerId) {
-        return getLayer(ctx, layerId, true);
-    }
-
-    private void checkIfLayerExist(final Context ctx, final String layerId) {
-        getLayer(ctx, layerId, false);
-    }
-
-
-    private ChainCodeLayer getLayer(final Context ctx, final String layerId, boolean exist) {
         ChaincodeStub stub = ctx.getStub();
         String layerState = stub.getStringState(layerId);
 
-        if (layerState.isEmpty() && exist) {
+        if (layerState.isEmpty()) {
             String errorMessage = String.format("Layer with id: %s does not exist", layerId);
             System.out.println(errorMessage);
             throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_NOT_FOUND.toString());
         }
 
-        if (!layerState.isEmpty() && !exist) {
-            String errorMessage = String.format("Layer with id: %s already exists", layerId);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_ALREADY_EXISTS.toString());
-        }
-
         return jsonConverter.fromJson(layerState, ChainCodeLayer.class);
+    }
+
+
+    private ChainCodeLayer getLayer(final Context ctx, final String layerId, boolean shouldExists) {
+        ChaincodeStub stub = ctx.getStub();
+        String layerState = stub.getStringState(layerId);
+
+        if (layerState.isEmpty()) {
+            if (shouldExists) {
+                String errorMessage = String.format("Layer with id: %s does not exist", layerId);
+                System.out.println(errorMessage);
+                throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_NOT_FOUND.toString());
+            } else {
+                return ChainCodeLayer.builder().build();
+            }
+        } else {
+            if (shouldExists) {
+                return jsonConverter.fromJson(layerState, ChainCodeLayer.class);
+            } else {
+                String errorMessage = String.format("Layer with id: %s already exists", layerId);
+                System.out.println(errorMessage);
+                throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_ALREADY_EXISTS.toString());
+            }
+        }
     }
 
 

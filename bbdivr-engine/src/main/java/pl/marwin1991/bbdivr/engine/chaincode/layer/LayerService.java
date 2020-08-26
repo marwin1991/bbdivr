@@ -1,5 +1,6 @@
 package pl.marwin1991.bbdivr.engine.chaincode.layer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hyperledger.fabric.gateway.ContractException;
 import org.hyperledger.fabric.gateway.Gateway;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.concurrent.TimeoutException;
 import static pl.marwin1991.bbdivr.engine.chaincode.enroll.EnrollService.APP_USER;
 import static pl.marwin1991.bbdivr.engine.chaincode.enroll.EnrollService.NETWORK_CONFIG_PATH;
 
+@Slf4j
 @Service
 public class LayerService {
 
@@ -39,13 +41,21 @@ public class LayerService {
         builder.identity(walletService.getWallet(), APP_USER).networkConfig(networkConfigPath).discovery(true);
         try (Gateway gateway = builder.connect()) {
 
+            String json = layer.toJson();
+
+            byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
+            log.info("bytes.length = " + bytes.length);
+
             byte[] result = contractService.getContract(gateway)
-                    .submitTransaction(ChainCodeOperations.ADD_LAYER.getOperationName(),
-                            layer.getId(),
+                    .createTransaction(ChainCodeOperations.ADD_LAYER.getOperationName())
+                    .submit(layer.getId(),
                             layer.getParentId(),
                             layer.toJson());
 
             return ChainCodeLayer.fromJson(new String(result, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            log.error("Error evaluating the contract", e);
+            throw e;
         }
     }
 

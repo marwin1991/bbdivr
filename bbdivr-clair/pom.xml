@@ -10,7 +10,7 @@
 
     <artifactId>bbdivr-clair</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>BBDIVR Clair</name>
+    <name>bbdivr Clair</name>
     <description>Client for Clair Core Os</description>
 
     <properties>

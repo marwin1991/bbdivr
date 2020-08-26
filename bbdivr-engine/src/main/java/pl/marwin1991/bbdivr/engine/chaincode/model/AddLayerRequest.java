@@ -7,8 +7,7 @@ import java.util.List;
 @Data
 public class AddLayerRequest {
     private String id;
-
     private String parentId;
-
-    private List<VulnerabilityDTO> vulnerabilities;
+    private List<String> vulnerabilities;
+    private List<String> vulnerabilitiesNamesFromParents;
 }

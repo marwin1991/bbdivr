@@ -4,15 +4,21 @@ package pl.marwin1991.bbdivr.engine.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.marwin1991.bbdivr.clair.provider.TempDirLocationProvider;
 import pl.marwin1991.bbdivr.clair.service.ClairLayerAnalyseService;
 import pl.marwin1991.bbdivr.client.DockerClientProvider;
+import pl.marwin1991.bbdivr.engine.chaincode.converter.RequestToChainCodeConverter;
+import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
+import pl.marwin1991.bbdivr.model.Layer;
 import pl.marwin1991.bbdivr.model.Manifest;
 import pl.marwin1991.bbdivr.model.ScanResult;
 
@@ -22,8 +28,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ScannerService {
@@ -31,13 +39,18 @@ public class ScannerService {
     private final ObjectMapper objectMapper;
     private final ClairLayerAnalyseService layerAnalyseService;
     private final TempDirLocationProvider tempDirLocationProvider;
+    private final LayerService layerService;
+    private final RequestToChainCodeConverter converter;
 
     @SneakyThrows
     public ScanResult scan(String imageName) {
+        log.info("Start analysing image " + imageName);
         Path tmpPath = FilesUtils.createTmpPath();
         try {
             tempDirLocationProvider.addPath(tmpPath);
             DockerClient client = dockerClientProvider.getClient();
+
+            checkIfExistLocallyAndPull(imageName);
 
             InputStream inputStream = client.saveImageCmd(imageName).exec();
             FilesUtils.decompress(inputStream, tmpPath.toFile());
@@ -45,7 +58,18 @@ public class ScannerService {
 
             List<String> layerIds = getLayersId(tmpPath);
 
-            return layerAnalyseService.analyse(layerIds);
+            ScanResult scanResult = layerAnalyseService.analyse(layerIds);
+
+            for (Layer layer : scanResult.getLayers()) {
+                try {
+                    layerService.addLayer(converter.convert(layer));
+                } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
+                    log.error("Failed to add to blockchain", e);
+                    throw e;
+                }
+            }
+
+            return scanResult;
         } finally {
             tempDirLocationProvider.removePath(tmpPath);
             FileUtils.deleteDirectory(tmpPath.toFile());
@@ -63,5 +87,18 @@ public class ScannerService {
                 .stream()
                 .map(s -> s.replace("/layer.tar", ""))
                 .collect(Collectors.toList());
+    }
+
+    private void checkIfExistLocallyAndPull(String imageName) {
+        try {
+            dockerClientProvider.getClient().inspectImageCmd(imageName).exec();
+        } catch (NotFoundException e) {
+            log.info(imageName + " not found locally, image will ne pulled from remote");
+            try {
+                dockerClientProvider.getClient().pullImageCmd(imageName).start().awaitCompletion();
+            } catch (InterruptedException interruptedException) {
+                log.error("Error during pulling image " + imageName, interruptedException);
+            }
+        }
     }
 }

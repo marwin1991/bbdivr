@@ -1,5 +1,7 @@
 # Usage ./startAll.sh
 
+rm -r ../wallet
+
 ./start.sh
 
 ./createChannel.sh

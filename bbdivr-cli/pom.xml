@@ -10,8 +10,8 @@
 
     <artifactId>bbdivr-cli</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>BBDIVR CLI</name>
-    <description>Command line client for BBDIVR Engine</description>
+    <name>bbdivr CLI</name>
+    <description>Command line client for bbdivr Engine</description>
 
     <properties>
         <java.version>11</java.version>
@@ -32,6 +32,10 @@
             <groupId>pl.marwin1991.bbdivr</groupId>
             <artifactId>bbdivr-common</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
 

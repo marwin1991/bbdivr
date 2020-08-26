@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.cli;
+package pl.marwin1991.bbdivr.cli.command;
 
 import com.github.dockerjava.api.model.Image;
 import lombok.AllArgsConstructor;

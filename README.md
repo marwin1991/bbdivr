@@ -1,4 +1,4 @@
-# blockchain-based-docker-images-vulnerabilities-registry (BBDIVR)
+# blockchain-based-docker-images-vulnerabilities-registry (bbdivr)
 This is my master thesis project to keep source files, configurations and other important files that was produce during research
 
 
@@ -22,4 +22,10 @@ and then add /bin to yor path
 
 ```
 export PATH=<path to download location>/bin:$PATH
+```
+
+To test it locally add to /etc/hosts
+```
+127.0.0.1 peer0.org1.example.com
+127.0.0.1 peer0.org2.example.com
 ```

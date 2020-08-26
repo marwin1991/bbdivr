@@ -10,7 +10,7 @@
 
     <artifactId>bbdivr-common</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>BBDIVR Common</name>
+    <name>bbdivr Common</name>
     <description>Common files</description>
 
     <properties>
