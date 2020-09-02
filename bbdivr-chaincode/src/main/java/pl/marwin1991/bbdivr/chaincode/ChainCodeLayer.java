@@ -30,10 +30,10 @@ public class ChainCodeLayer {
     private Integer modifyIndex;
 
     @Property
-    private List<String> vulnerabilities;
+    private List<ChainCodeVulnerability> vulnerabilities;
 
     @Property
-    private List<String> vulnerabilitiesNamesFromParents;
+    private List<ChainCodeVulnerability> vulnerabilitiesNamesFromParents;
 
     public String toJson() {
         Gson jsonConverter = new Gson();

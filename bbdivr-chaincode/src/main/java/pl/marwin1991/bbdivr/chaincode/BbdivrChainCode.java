@@ -103,15 +103,15 @@ public final class BbdivrChainCode implements ContractInterface {
     public ChainCodeLayer addVulnerability(final Context ctx, final String layerId, final String vulnerabilityAsJson) {
         ChaincodeStub stub = ctx.getStub();
         ChainCodeLayer layer = getExistingLayer(ctx, layerId);
-        //ChainCodeVulnerability vulnerability = jsonConverter.fromJson(vulnerabilityAsJson, ChainCodeVulnerability.class);
+        ChainCodeVulnerability vulnerability = jsonConverter.fromJson(vulnerabilityAsJson, ChainCodeVulnerability.class);
 
-        if (layer.getVulnerabilities().contains(vulnerabilityAsJson)) {
-            String errorMessage = String.format("Layer with id: %s already has this vulnerability %s", layerId, vulnerabilityAsJson);
+        if (layer.getVulnerabilities().contains(vulnerability)) {
+            String errorMessage = String.format("Layer with id: %s already has this vulnerability %s", layerId, vulnerability.getId());
             System.out.println(errorMessage);
             throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.VULNERABILITY_ALREADY_EXIST.toString());
         }
 
-        layer.getVulnerabilities().add(vulnerabilityAsJson);
+        layer.getVulnerabilities().add(vulnerability);
         stub.putStringState(layerId, jsonConverter.toJson(layer));
 
         return layer;

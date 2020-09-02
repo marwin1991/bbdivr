@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public enum Severity {
 
-    DEFCON("Defcon1"),
-    CRITICAL("Critical"),
-    HIGH("High"),
-    MEDIUM("Medium"),
-    LOW("Low"),
-    NEGLIGIBLE("Negligible"),
-    UNKNOWN("Unknown");
+    DEFCON("1"),
+    CRITICAL("2"),
+    HIGH("3"),
+    MEDIUM("4"),
+    LOW("5"),
+    NEGLIGIBLE("6"),
+    UNKNOWN("0");
 
     @JsonValue
     private String level;

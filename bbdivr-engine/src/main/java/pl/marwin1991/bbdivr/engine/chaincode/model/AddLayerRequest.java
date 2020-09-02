@@ -1,6 +1,7 @@
 package pl.marwin1991.bbdivr.engine.chaincode.model;
 
 import lombok.Data;
+import pl.marwin1991.bbdivr.model.Vulnerability;
 
 import java.util.List;
 
@@ -8,6 +9,6 @@ import java.util.List;
 public class AddLayerRequest {
     private String id;
     private String parentId;
-    private List<String> vulnerabilities;
-    private List<String> vulnerabilitiesNamesFromParents;
+    private List<Vulnerability> vulnerabilities;
+    private List<Vulnerability> vulnerabilitiesNamesFromParents;
 }

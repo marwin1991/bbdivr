@@ -11,7 +11,7 @@ public class Layer {
 
     private String id;
     private String parentId;
-    private List<String> vulnerabilities;
-    private List<String> vulnerabilitiesNamesFromParents;
+    private List<Vulnerability> vulnerabilities;
+    private List<Vulnerability> vulnerabilitiesNamesFromParents;
 
 }

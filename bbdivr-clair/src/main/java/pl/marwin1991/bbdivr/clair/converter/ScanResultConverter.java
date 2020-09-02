@@ -4,9 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import pl.marwin1991.bbdivr.clair.model.ClairFeature;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
-import pl.marwin1991.bbdivr.clair.model.ClairVulnerability;
 import pl.marwin1991.bbdivr.model.Layer;
 import pl.marwin1991.bbdivr.model.ScanResult;
+import pl.marwin1991.bbdivr.model.Vulnerability;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -22,8 +22,8 @@ public class ScanResultConverter {
     public ScanResult convert(List<ClairLayerScanResponse> responses) {
         List<Layer> layers = new LinkedList<>();
 
-        List<String> preVulnerabilities = new LinkedList<>();
-        List<String> vulnerabilities;
+        List<Vulnerability> preVulnerabilities = new LinkedList<>();
+        List<Vulnerability> vulnerabilities;
 
         for (ClairLayerScanResponse r : responses) {
             log.info("Converting layer: " + r.getLayer().getName());
@@ -47,8 +47,8 @@ public class ScanResultConverter {
                 .build();
     }
 
-    private List<String> getVulnerabilities(List<ClairFeature> features, List<String> previousVulnerabilities) {
-        List<String> vulnerabilities = new LinkedList<>();
+    private List<Vulnerability> getVulnerabilities(List<ClairFeature> features, List<Vulnerability> previousVulnerabilities) {
+        List<Vulnerability> vulnerabilities = new LinkedList<>();
 
         for (ClairFeature f : features) {
             vulnerabilities.addAll(getVulnerabilitiesFromFeature(f, previousVulnerabilities));
@@ -57,15 +57,20 @@ public class ScanResultConverter {
         return vulnerabilities;
     }
 
-    private List<String> getVulnerabilitiesFromFeature(ClairFeature feature, List<String> previousVulnerabilities) {
+    private List<Vulnerability> getVulnerabilitiesFromFeature(ClairFeature feature, List<Vulnerability> previousVulnerabilities) {
         if (feature.getVulnerabilities() == null)
             return Collections.emptyList();
 
         return feature
                 .getVulnerabilities()
                 .stream()
-                .filter(v -> !previousVulnerabilities.contains(v.getName()))
-                .map(ClairVulnerability::getName)
+                .map(v -> Vulnerability
+                        .builder()
+                        .id(v.getName())
+                        .severity(v.getSeverity())
+                        .build()
+                )
+                .filter(v -> !previousVulnerabilities.contains(v))
                 .collect(Collectors.toList());
 
 //        return feature
