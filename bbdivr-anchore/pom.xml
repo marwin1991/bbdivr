@@ -8,10 +8,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bbdivr-clair</artifactId>
+    <artifactId>bbdivr-anchore</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>bbdivr clair</name>
-    <description>Client for Clair Core Os</description>
+    <name>bbdivr anchore</name>
+    <description>Client for Anchore Engine</description>
 
     <properties>
         <java.version>11</java.version>

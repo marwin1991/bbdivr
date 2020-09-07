@@ -21,6 +21,7 @@
         <module>bbdivr-common</module>
         <module>bbdivr-engine</module>
         <module>bbdivr-clair</module>
+        <module>bbdivr-anchore</module>
         <module>bbdivr-cli</module>
         <module>bbdivr-chaincode</module>
     </modules>
