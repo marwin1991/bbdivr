@@ -1,4 +1,4 @@
-# blockchain-based-docker-images-vulnerabilities-registry (bbdivr)
+# bbdivr (blockchain-based-docker-images-vulnerabilities-registry)
 This is my master thesis project to keep source files, configurations and other important files that was produce during research
 
 
