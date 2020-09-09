@@ -33,7 +33,8 @@ public class ScanResultConverter {
                     .id(r.getLayer().getName())
                     .parentId(r.getLayer().getParentName())
                     .vulnerabilities(vulnerabilities)
-                    .vulnerabilitiesNamesFromParents(new LinkedList<>(preVulnerabilities))
+                    .fixedVulnerabilitiesFromParents(new LinkedList<>())
+                    //.vulnerabilitiesNamesFromParents(new LinkedList<>(preVulnerabilities))
                     .build();
             layers.add(layer);
 

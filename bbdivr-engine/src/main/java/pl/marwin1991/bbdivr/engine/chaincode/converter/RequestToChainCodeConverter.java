@@ -1,8 +1,8 @@
 package pl.marwin1991.bbdivr.engine.chaincode.converter;
 
 import org.springframework.stereotype.Component;
-import pl.marwin1991.bbdivr.chaincode.ChainCodeLayer;
-import pl.marwin1991.bbdivr.chaincode.ChainCodeVulnerability;
+import pl.marwin1991.bbdivr.chaincode.layer.ChainCodeLayer;
+import pl.marwin1991.bbdivr.chaincode.vulnerability.ChainCodeVulnerability;
 import pl.marwin1991.bbdivr.engine.chaincode.model.AddLayerRequest;
 import pl.marwin1991.bbdivr.model.Layer;
 import pl.marwin1991.bbdivr.model.Vulnerability;
@@ -17,8 +17,8 @@ public class RequestToChainCodeConverter {
         return ChainCodeLayer.builder()
                 .id(layer.getId())
                 .parentId(layer.getParentId() == null ? "" : layer.getParentId())
-                .vulnerabilities(convert(layer.getVulnerabilities()))
-                .vulnerabilitiesNamesFromParents(convert(layer.getVulnerabilitiesNamesFromParents()))
+                .vulnerabilityIds(layer.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()))
+                .fixedVulnerabilityIdsFromParents(layer.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()))
                 .build();
     }
 
@@ -26,8 +26,8 @@ public class RequestToChainCodeConverter {
         return ChainCodeLayer.builder()
                 .id(request.getId())
                 .parentId(request.getParentId() == null ? "" : request.getParentId())
-                .vulnerabilities(convert(request.getVulnerabilities()))
-                .vulnerabilitiesNamesFromParents(convert(request.getVulnerabilitiesNamesFromParents()))
+                .vulnerabilityIds(request.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()))
+                .fixedVulnerabilityIdsFromParents(request.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()))
                 .build();
     }
 

@@ -5,8 +5,8 @@ import org.hyperledger.fabric.gateway.ContractException;
 import org.hyperledger.fabric.gateway.Gateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.marwin1991.bbdivr.chaincode.ChainCodeLayer;
-import pl.marwin1991.bbdivr.chaincode.ChainCodeOperations;
+import pl.marwin1991.bbdivr.chaincode.common.ChainCodeOperations;
+import pl.marwin1991.bbdivr.chaincode.layer.ChainCodeLayer;
 import pl.marwin1991.bbdivr.engine.chaincode.ContractService;
 import pl.marwin1991.bbdivr.engine.chaincode.wallet.WalletService;
 

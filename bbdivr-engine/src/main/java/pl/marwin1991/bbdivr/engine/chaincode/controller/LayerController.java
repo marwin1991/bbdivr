@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.marwin1991.bbdivr.chaincode.ChainCodeLayer;
+import pl.marwin1991.bbdivr.chaincode.layer.ChainCodeLayer;
 import pl.marwin1991.bbdivr.engine.chaincode.converter.RequestToChainCodeConverter;
 import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.chaincode.model.AddLayerRequest;

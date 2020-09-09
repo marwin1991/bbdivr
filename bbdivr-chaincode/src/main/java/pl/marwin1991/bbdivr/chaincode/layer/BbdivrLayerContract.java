@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.chaincode;
+package pl.marwin1991.bbdivr.chaincode.layer;
 
 import com.google.gson.Gson;
 import org.hyperledger.fabric.contract.Context;
@@ -8,15 +8,16 @@ import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.KeyValue;
 import org.hyperledger.fabric.shim.ledger.QueryResultsIteratorWithMetadata;
+import pl.marwin1991.bbdivr.chaincode.common.BbdivrChainCodeErrors;
 
 import java.util.LinkedList;
 import java.util.List;
 
 @Contract(
-        name = "bbdivr",
+        name = "bbdivr-layer",
         info = @Info(
-                title = "bbdivr contract",
-                description = "bbdivr contract to store and manage docker images vulnerabilities",
+                title = "bbdivr layer contract",
+                description = "bbdivr layer contract to store and manage layers of docker images vulnerabilities",
                 version = "1.0.0-SNAPSHOT",
                 license = @License(
                         name = "Apache 2.0 License",
@@ -26,7 +27,7 @@ import java.util.List;
                         name = "Peter Zmilczak",
                         url = "https://github.com/marwin1991")))
 @Default
-public final class BbdivrChainCode implements ContractInterface {
+public final class BbdivrLayerContract implements ContractInterface {
 
     private final Gson jsonConverter = new Gson();
 
@@ -93,25 +94,24 @@ public final class BbdivrChainCode implements ContractInterface {
     /**
      * Adds a new layer on the ledger.
      *
-     * @param ctx                 the transaction context
-     * @param layerId             the layer id of the new layer
-     * @param vulnerabilityAsJson the string representation of Layer
+     * @param ctx             the transaction context
+     * @param layerId         the layer id of the new layer
+     * @param vulnerabilityId the vulnerability id
      * @return the created layer
      */
 
     @Transaction()
-    public ChainCodeLayer addVulnerability(final Context ctx, final String layerId, final String vulnerabilityAsJson) {
+    public ChainCodeLayer addVulnerabilityToLayer(final Context ctx, final String layerId, final String vulnerabilityId) {
         ChaincodeStub stub = ctx.getStub();
         ChainCodeLayer layer = getExistingLayer(ctx, layerId);
-        ChainCodeVulnerability vulnerability = jsonConverter.fromJson(vulnerabilityAsJson, ChainCodeVulnerability.class);
 
-        if (layer.getVulnerabilities().contains(vulnerability)) {
-            String errorMessage = String.format("Layer with id: %s already has this vulnerability %s", layerId, vulnerability.getId());
+        if (layer.getVulnerabilityIds().contains(vulnerabilityId)) {
+            String errorMessage = String.format("Layer with id: %s already has this vulnerability with id: %s", layerId, vulnerabilityId);
             System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.VULNERABILITY_ALREADY_EXIST.toString());
+            throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.VULNERABILITY_ID_ALREADY_ADDED.toString());
         }
 
-        layer.getVulnerabilities().add(vulnerability);
+        layer.getVulnerabilityIds().add(vulnerabilityId);
         stub.putStringState(layerId, jsonConverter.toJson(layer));
 
         return layer;
@@ -191,12 +191,5 @@ public final class BbdivrChainCode implements ContractInterface {
                 throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_ALREADY_EXISTS.toString());
             }
         }
-    }
-
-
-    private enum BbdivrChainCodeErrors {
-        LAYER_NOT_FOUND,
-        LAYER_ALREADY_EXISTS,
-        VULNERABILITY_ALREADY_EXIST
     }
 }

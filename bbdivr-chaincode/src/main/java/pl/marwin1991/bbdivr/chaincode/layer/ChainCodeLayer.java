@@ -1,4 +1,4 @@
-package pl.marwin1991.bbdivr.chaincode;
+package pl.marwin1991.bbdivr.chaincode.layer;
 
 import com.google.gson.Gson;
 import lombok.Builder;
@@ -30,10 +30,10 @@ public class ChainCodeLayer {
     private Integer modifyIndex;
 
     @Property
-    private List<ChainCodeVulnerability> vulnerabilities;
+    private List<String> vulnerabilityIds;
 
     @Property
-    private List<ChainCodeVulnerability> vulnerabilitiesNamesFromParents;
+    private List<String> fixedVulnerabilityIdsFromParents;
 
     public String toJson() {
         Gson jsonConverter = new Gson();
