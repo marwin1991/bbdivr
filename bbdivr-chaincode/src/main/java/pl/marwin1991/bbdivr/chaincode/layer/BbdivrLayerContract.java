@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Contract(
-        name = "bbdivr-layer",
+        name = "bbdivr-layer-contract",
         info = @Info(
                 title = "bbdivr layer contract",
                 description = "bbdivr layer contract to store and manage layers of docker images vulnerabilities",

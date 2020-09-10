@@ -44,7 +44,7 @@ public class RequestToChainCodeConverter {
     private ChainCodeVulnerability convert(Vulnerability v) {
         return ChainCodeVulnerability.builder()
                 .id(v.getId())
-                .sev(v.getSeverity().getLevel())
+                .severity(v.getSeverity().getLevel())
                 .build();
     }
 }

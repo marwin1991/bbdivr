@@ -11,7 +11,7 @@
     <artifactId>bbdivr-engine</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>bbdivr Engine</name>
-    <description>bbdivr Engine is a server side application to interact with BBDVR chaincode deployed in Hyperledger
+    <description>bbdivr engine is a server side application to interact with BBDVR chaincode deployed in Hyperledger
         Farbic blockchain
     </description>
 
