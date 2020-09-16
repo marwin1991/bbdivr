@@ -4,13 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import pl.marwin1991.bbdivr.clair.model.ClairFeature;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
-import pl.marwin1991.bbdivr.model.Layer;
-import pl.marwin1991.bbdivr.model.ScanResult;
-import pl.marwin1991.bbdivr.model.Vulnerability;
+import pl.marwin1991.bbdivr.model.*;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -68,7 +64,7 @@ public class ClairScanResultConverter {
                 .map(v -> Vulnerability
                         .builder()
                         .id(v.getName())
-                        .severity(v.getSeverity())
+                        .severity(Severity.of(v.getSeverity()))
                         .build()
                 )
                 .filter(v -> !previousVulnerabilities.contains(v))
@@ -91,5 +87,47 @@ public class ClairScanResultConverter {
 //                        .fixedBy(v.getFixedBy())
 //                        .build())
 //                .collect(Collectors.toList());
+    }
+
+    public SumScanResult convertToSum(List<ClairLayerScanResponse> v) {
+        return SumScanResult.builder()
+                .scanToolName(SCAN_TOOL_NAME)
+                .id(v.get(v.size() - 1).getLayer().getName())
+                .vulnerabilitiesIds(getVulnerabilities(v.get(v.size() - 1).getLayer().getFeatures()))
+                .build();
+    }
+
+    private Map<Severity, Set<String>> getVulnerabilities(List<ClairFeature> features) {
+        Map<Severity, Set<String>> vulnerabilities = new HashMap<>();
+
+        for (ClairFeature f : features) {
+            getVulnerabilitiesFromFeature(f).forEach((k, v) -> {
+                if (vulnerabilities.containsKey(k)) {
+                    vulnerabilities.get(k).addAll(v);
+                } else {
+                    vulnerabilities.put(k, v);
+                }
+            });
+        }
+
+        return vulnerabilities;
+    }
+
+    private Map<Severity, Set<String>> getVulnerabilitiesFromFeature(ClairFeature f) {
+        Map<Severity, Set<String>> vulMap = new HashMap<>();
+
+        if (f != null && f.getVulnerabilities() != null) {
+            f.getVulnerabilities().forEach(v -> {
+                Severity severity = Severity.of(v.getSeverity());
+
+                if (vulMap.containsKey(severity)) {
+                    vulMap.get(severity).add(v.getName());
+                } else {
+                    vulMap.put(severity, new LinkedHashSet<>(Collections.singleton(v.getName())));
+                }
+            });
+        }
+
+        return vulMap;
     }
 }

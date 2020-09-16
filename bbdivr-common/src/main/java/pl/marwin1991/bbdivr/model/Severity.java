@@ -16,9 +16,31 @@ public enum Severity {
     MEDIUM("4"),
     LOW("5"),
     NEGLIGIBLE("6"),
-    UNKNOWN("0");
+    UNKNOWN("7");
 
     @JsonValue
     private String level;
 
+
+    public static Severity of(String sev) {
+        switch (sev) {
+            case "Unknown":
+                return UNKNOWN;
+            case "Negligible":
+                return NEGLIGIBLE;
+            case "Medium":
+                return MEDIUM;
+            case "Low":
+                return LOW;
+            case "High":
+                return HIGH;
+            case "Critical":
+                return CRITICAL;
+            case "Defcon1":
+                return DEFCON;
+            default:
+                return UNKNOWN;
+        }
+
+    }
 }

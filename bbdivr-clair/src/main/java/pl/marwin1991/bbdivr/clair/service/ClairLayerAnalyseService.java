@@ -9,6 +9,7 @@ import pl.marwin1991.bbdivr.clair.model.ClairLayerScanData;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanRequest;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
 import pl.marwin1991.bbdivr.model.ScanResult;
+import pl.marwin1991.bbdivr.model.SumScanResult;
 import pl.marwin1991.bbdivr.service.LayerAnalyseService;
 
 import java.util.List;
@@ -46,6 +47,21 @@ public class ClairLayerAnalyseService implements LayerAnalyseService {
         log.info("Finished analysing");
 
         return converter.convert(fetchVulnerabilities(layerIds));
+    }
+
+    @Override
+    public SumScanResult analyseAndSum(String imageName, List<String> layerIds) {
+        for (int i = 0; i < layerIds.size(); i++) {
+            log.info("Analyzing " + layerIds.get(i));
+
+            if (i > 0) {
+                analyzeLayer(layerIds.get(i), layerIds.get(i - 1));
+            } else {
+                analyzeLayer(layerIds.get(i), "");
+            }
+        }
+        log.info("Finished analysing");
+        return converter.convertToSum(fetchVulnerabilities(layerIds));
     }
 
     private List<ClairLayerScanResponse> fetchVulnerabilities(List<String> layerIds) {

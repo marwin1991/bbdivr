@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.marwin1991.bbdivr.engine.service.ScannerService;
 import pl.marwin1991.bbdivr.model.SumScanResult;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sum")
 public class ScannerSumController {
@@ -21,18 +23,18 @@ public class ScannerSumController {
     }
 
     @GetMapping("/{imageName}")
-    private ResponseEntity<SumScanResult> sumScan(@PathVariable String imageName) {
+    private ResponseEntity<List<SumScanResult>> sumScan(@PathVariable String imageName) {
         return ResponseEntity.ok(scannerService.scanSum(imageName));
     }
 
     @GetMapping("/{imageRepo}/{imageName}")
-    private ResponseEntity<SumScanResult> sumScan(@PathVariable String imageRepo, @PathVariable String imageName) {
+    private ResponseEntity<List<SumScanResult>> sumScan(@PathVariable String imageRepo, @PathVariable String imageName) {
         String finalName = imageRepo + "/" + imageName;
         return ResponseEntity.ok(scannerService.scanSum(finalName));
     }
 
     @GetMapping("/{imageRepo1}/{imageRepo2}/{imageName}")
-    private ResponseEntity<SumScanResult> sumScan(@PathVariable String imageRepo1, @PathVariable String imageRepo2, @PathVariable String imageName) {
+    private ResponseEntity<List<SumScanResult>> sumScan(@PathVariable String imageRepo1, @PathVariable String imageRepo2, @PathVariable String imageName) {
         String finalName = imageRepo1 + "/" + imageRepo2 + "/" + imageName;
         return ResponseEntity.ok(scannerService.scanSum(finalName));
     }

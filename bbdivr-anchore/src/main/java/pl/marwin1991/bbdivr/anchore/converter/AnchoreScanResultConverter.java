@@ -32,16 +32,16 @@ public class AnchoreScanResultConverter {
                 .build();
     }
 
-    private Map<Severity, List<String>> getVulnerabilities(List<VulnerabilityList> responses) {
-        Map<Severity, List<String>> vulMap = new HashMap<>();
+    private Map<Severity, Set<String>> getVulnerabilities(List<VulnerabilityList> responses) {
+        Map<Severity, Set<String>> vulMap = new HashMap<>();
 
         responses.get(0).getVulnerabilities().forEach(v -> {
-            Severity severity = Severity.valueOf(v.getSeverity());
+            Severity severity = Severity.of(v.getSeverity());
 
             if (vulMap.containsKey(severity)) {
                 vulMap.get(severity).add(v.getVuln());
             } else {
-                vulMap.put(severity, new LinkedList<>(Collections.singleton(v.getVuln())));
+                vulMap.put(severity, new HashSet<>(Collections.singleton(v.getVuln())));
             }
         });
 

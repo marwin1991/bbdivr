@@ -20,14 +20,14 @@ import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
 import pl.marwin1991.bbdivr.model.Manifest;
 import pl.marwin1991.bbdivr.model.ScanResult;
+import pl.marwin1991.bbdivr.model.Severity;
 import pl.marwin1991.bbdivr.model.SumScanResult;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -81,7 +81,7 @@ public class ScannerService {
     }
 
     @SneakyThrows
-    public SumScanResult scanSum(String imageName) {
+    public List<SumScanResult> scanSum(String imageName) {
         log.info("Start analysing image " + imageName);
         Path tmpPath = FilesUtils.createTmpPath();
         try {
@@ -96,14 +96,74 @@ public class ScannerService {
 
             List<String> layerIds = getLayersId(tmpPath);
 
-            //ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
-            SumScanResult scanResult2 = anchoreLayerAnalyseService.analyseAndSum(imageName, layerIds);
+            List<SumScanResult> toReturn = new LinkedList<>();
 
-            return scanResult2;
+            SumScanResult clairScanResult = clairLayerAnalyseService.analyseAndSum(imageName, layerIds);
+            SumScanResult anchoreScanResult = anchoreLayerAnalyseService.analyseAndSum(imageName, layerIds);
+
+            toReturn.add(clairScanResult);
+            toReturn.add(anchoreScanResult);
+
+            SumScanResult sum = sum(anchoreScanResult, clairScanResult);
+            toReturn.add(sum);
+
+
+            printSumToCsv(toReturn);
+
+            return toReturn;
         } finally {
             tempDirLocationProvider.removePath(tmpPath);
             FileUtils.deleteDirectory(tmpPath.toFile());
         }
+    }
+
+    @SneakyThrows
+    private void printSumToCsv(List<SumScanResult> listOfVul) {
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("results.csv", true)));
+
+        Arrays.stream(Severity.values()).forEach(sev -> {
+            if (sev != Severity.DEFCON) {
+                String tmp_result = sev.name() + "," + getSize(listOfVul.get(0).getVulnerabilitiesIds().get(sev)) +
+                        "," + getSize(listOfVul.get(1).getVulnerabilitiesIds().get(sev)) + "," +
+                        getSize(listOfVul.get(2).getVulnerabilitiesIds().get(sev)) + "\n";
+                out.print(tmp_result);
+            }
+        });
+        out.flush();
+        out.close();
+    }
+
+    private String getSize(Set<String> s) {
+        if (s == null)
+            return String.valueOf(0);
+        return String.valueOf(s.size());
+    }
+
+    private SumScanResult sum(SumScanResult anchoreScanResult, SumScanResult clairScanResult) {
+        Map<Severity, Set<String>> vulMap = new HashMap<>();
+        Arrays.stream(Severity.values()).forEach(sev -> {
+            Set<String> tmp1 = clairScanResult.getVulnerabilitiesIds().get(sev);
+            Set<String> tmp2 = anchoreScanResult.getVulnerabilitiesIds().get(sev);
+
+            if (tmp1 != null && tmp2 != null) {
+                tmp1.addAll(tmp2);
+                vulMap.put(sev, tmp1);
+            } else {
+                if (tmp1 != null) {
+                    vulMap.put(sev, tmp1);
+                }
+                if (tmp2 != null) {
+                    vulMap.put(sev, tmp2);
+                }
+            }
+
+        });
+
+        return SumScanResult.builder()
+                .id(anchoreScanResult.getId())
+                .scanToolName("SUM")
+                .vulnerabilitiesIds(vulMap)
+                .build();
     }
 
     private List<String> getLayersId(Path path) throws IOException {
