@@ -1,0 +1,7 @@
+sev_name,clair,anchore,sum
+CRITICAL,0,0,0
+HIGH,0,0,0
+MEDIUM,29,29,29
+LOW,47,43,47
+NEGLIGIBLE,23,21,23
+UNKNOWN,0,0,0

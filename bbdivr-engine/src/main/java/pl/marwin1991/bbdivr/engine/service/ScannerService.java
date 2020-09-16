@@ -108,7 +108,7 @@ public class ScannerService {
             toReturn.add(sum);
 
 
-            printSumToCsv(toReturn);
+            printSumToCsv(toReturn, imageName);
 
             return toReturn;
         } finally {
@@ -118,9 +118,10 @@ public class ScannerService {
     }
 
     @SneakyThrows
-    private void printSumToCsv(List<SumScanResult> listOfVul) {
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("results.csv", true)));
-
+    private void printSumToCsv(List<SumScanResult> listOfVul, String image) {
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(image.replace("/", "-").replace(":", "-") + "-results.csv", true)));
+        // sev_name, clair, anchore, sum
+        out.print("sev_name,clair,anchore,sum\n");
         Arrays.stream(Severity.values()).forEach(sev -> {
             if (sev != Severity.DEFCON) {
                 String tmp_result = sev.name() + "," + getSize(listOfVul.get(0).getVulnerabilitiesIds().get(sev)) +

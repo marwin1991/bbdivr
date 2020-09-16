@@ -103,7 +103,7 @@ public class AnchoreLayerAnalyseService implements LayerAnalyseService {
 
             status = response.getBody().get(0).getAnalysisStatus();
 
-            if (AnchoreImage.AnalysisStatusEnum.NOT_ANALYZED.equals(status)) {
+            if (!AnchoreImage.AnalysisStatusEnum.ANALYZED.equals(status)) {
                 Thread.sleep(10000);
             } else {
                 log.info("Finished Anchore Engine Analysing....");
