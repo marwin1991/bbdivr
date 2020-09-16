@@ -1,5 +1,7 @@
 package pl.marwin1991.bbdivr.anchore.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,11 @@ import org.springframework.web.client.RestTemplate;
 import pl.marwin1991.bbdivr.anchore.converter.AnchoreScanResultConverter;
 import pl.marwin1991.bbdivr.anchore.model.*;
 import pl.marwin1991.bbdivr.model.ScanResult;
+import pl.marwin1991.bbdivr.model.SumScanResult;
 import pl.marwin1991.bbdivr.service.LayerAnalyseService;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -25,16 +26,19 @@ public class AnchoreLayerAnalyseService implements LayerAnalyseService {
     private static final String LAYER_PATH = "/images";
     private static final String BY_ID = "/by_id";
     private static final String METADATA_MANIFEST_PATH = "/metadata/manifest";
+    private static final String VUL = "/vuln/all";
     private static final String SERVER_URL = "http://localhost:8228";
 
 
     private final AnchoreScanResultConverter converter;
     private final AnchoreAuthService authService;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public AnchoreLayerAnalyseService(AnchoreScanResultConverter converter, AnchoreAuthService anchoreAuthService) {
+    public AnchoreLayerAnalyseService(AnchoreScanResultConverter converter, AnchoreAuthService anchoreAuthService, ObjectMapper objectMapper) {
         this.converter = converter;
         this.authService = anchoreAuthService;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -42,12 +46,33 @@ public class AnchoreLayerAnalyseService implements LayerAnalyseService {
         log.info("Start ANCHORE analysing " + imageName);
         String imageId = postImage(imageName);
         String imageDigest = finishedAnalyseImage(imageId);
-        List<String> layersIds = getLayersIds(imageDigest);
-        return converter.convert(fetchVulnerabilities(layerIds));
+        List<String> ids = getLayersIds(imageDigest);
+        return converter.convert(fetchVulnerabilities(Collections.singletonList(imageDigest)));
     }
 
-    private List<Object> fetchVulnerabilities(List<String> layerIds) {
-        return null;
+    @Override
+    public SumScanResult analyseAndSum(String imageName, List<String> layerIds) {
+        log.info("Start ANCHORE analysing " + imageName);
+        String imageId = postImage(imageName);
+        String imageDigest = finishedAnalyseImage(imageId);
+        List<String> ids = getLayersIds(imageDigest);
+        return converter.convertToSum(fetchVulnerabilities(Collections.singletonList(imageDigest)));
+    }
+
+    private List<VulnerabilityList> fetchVulnerabilities(List<String> layerIds) {
+        List<VulnerabilityList> vulnerabilityLists = new LinkedList<>();
+
+        for (String id : layerIds) {
+            VulnerabilityList list = new RestTemplate().exchange(
+                    SERVER_URL + LAYER_PATH + "/" + id + VUL,
+                    HttpMethod.GET,
+                    authService.addAuthHeader(null),
+                    VulnerabilityList.class).getBody();
+
+            vulnerabilityLists.add(list);
+        }
+
+        return vulnerabilityLists;
     }
 
     private String postImage(String imageName) {
@@ -87,6 +112,7 @@ public class AnchoreLayerAnalyseService implements LayerAnalyseService {
         }
     }
 
+    @SneakyThrows
     private List<String> getLayersIds(String imageDigest) {
         ResponseEntity<AnchoreManifestResponse> response =
                 new RestTemplate()
@@ -96,9 +122,17 @@ public class AnchoreLayerAnalyseService implements LayerAnalyseService {
                                 AnchoreManifestResponse.class);
 
 
-        String[] manifests = response.getBody().getMatadata().split("\n");
-        List<String> aaa = Arrays.stream(manifests).map(m -> new String(Base64.getDecoder().decode(m), StandardCharsets.UTF_8)).collect(Collectors.toList());
-        return aaa;
+        String[] manifests = response.getBody().getMetadata().split("\n");
+        String content = Arrays.stream(manifests).map(m -> new String(Base64.getDecoder().decode(m), StandardCharsets.UTF_8)).collect(Collectors.joining());
+        AnchoreManifest manifest = objectMapper.readValue(content, new TypeReference<AnchoreManifest>() {
+        });
+        List<String> ids = manifest
+                .getLayers()
+                .stream()
+                .map(AnchoreLayerInfo::getDigest)
+                .collect(Collectors.toList());
+        ids.add(0, manifest.getConfig().getDigest());
+        return ids;
     }
 
 }

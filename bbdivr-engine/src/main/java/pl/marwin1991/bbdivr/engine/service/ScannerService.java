@@ -20,6 +20,7 @@ import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
 import pl.marwin1991.bbdivr.model.Manifest;
 import pl.marwin1991.bbdivr.model.ScanResult;
+import pl.marwin1991.bbdivr.model.SumScanResult;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +61,7 @@ public class ScannerService {
 
             List<String> layerIds = getLayersId(tmpPath);
 
-            ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
+            //ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
             ScanResult scanResult2 = anchoreLayerAnalyseService.analyse(imageName, layerIds);
 
 //            for (Layer layer : scanResult.getLayers()) {
@@ -72,7 +73,33 @@ public class ScannerService {
 //                }
 //            }
 
-            return scanResult1;
+            return scanResult2;
+        } finally {
+            tempDirLocationProvider.removePath(tmpPath);
+            FileUtils.deleteDirectory(tmpPath.toFile());
+        }
+    }
+
+    @SneakyThrows
+    public SumScanResult scanSum(String imageName) {
+        log.info("Start analysing image " + imageName);
+        Path tmpPath = FilesUtils.createTmpPath();
+        try {
+            tempDirLocationProvider.addPath(tmpPath);
+            DockerClient client = dockerClientProvider.getClient();
+
+            checkIfExistLocallyAndPull(imageName);
+
+            InputStream inputStream = client.saveImageCmd(imageName).exec();
+            FilesUtils.decompress(inputStream, tmpPath.toFile());
+            inputStream.close();
+
+            List<String> layerIds = getLayersId(tmpPath);
+
+            //ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
+            SumScanResult scanResult2 = anchoreLayerAnalyseService.analyseAndSum(imageName, layerIds);
+
+            return scanResult2;
         } finally {
             tempDirLocationProvider.removePath(tmpPath);
             FileUtils.deleteDirectory(tmpPath.toFile());
