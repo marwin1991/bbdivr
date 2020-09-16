@@ -46,13 +46,67 @@ public class LayerService {
             byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
             log.info("bytes.length = " + bytes.length);
 
-            byte[] result = contractService.getContract(gateway)
+            byte[] result = contractService.getLayersContract(gateway)
                     .createTransaction(ChainCodeOperations.ADD_LAYER.getOperationName())
                     .submit(layer.getId(),
                             layer.getParentId(),
                             layer.toJson());
 
             return ChainCodeLayer.fromJson(new String(result, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            log.error("Error evaluating the contract", e);
+            throw e;
+        }
+    }
+
+    public ChainCodeLayer queryLayer(String id) throws IOException, InterruptedException, TimeoutException, ContractException {
+        builder.identity(walletService.getWallet(), APP_USER).networkConfig(networkConfigPath).discovery(true);
+        try (Gateway gateway = builder.connect()) {
+
+            byte[] result = contractService.getLayersContract(gateway)
+                    .createTransaction(ChainCodeOperations.QUERY_LAYER.getOperationName())
+                    .submit(id);
+
+            return ChainCodeLayer.fromJson(new String(result, StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            log.error("Error evaluating the contract", e);
+            throw e;
+        }
+    }
+
+
+    public long testAddLayer(ChainCodeLayer layer) throws IOException, InterruptedException, TimeoutException, ContractException {
+        builder.identity(walletService.getWallet(), APP_USER).networkConfig(networkConfigPath).discovery(true);
+        try (Gateway gateway = builder.connect()) {
+
+            String json = layer.toJson();
+
+            byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
+            log.info("bytes.length = " + bytes.length);
+            long toReturn = bytes.length;
+
+            byte[] result = contractService.getLayersContract(gateway)
+                    .createTransaction(ChainCodeOperations.ADD_LAYER.getOperationName())
+                    .submit(layer.getId(),
+                            layer.getParentId(),
+                            layer.toJson());
+
+            return toReturn;
+        } catch (Exception e) {
+            log.error("Error evaluating the contract", e);
+            throw e;
+        }
+    }
+
+    public long testQueryLayer(String id) throws IOException, InterruptedException, TimeoutException, ContractException {
+        builder.identity(walletService.getWallet(), APP_USER).networkConfig(networkConfigPath).discovery(true);
+        try (Gateway gateway = builder.connect()) {
+
+            byte[] result = contractService.getLayersContract(gateway)
+                    .createTransaction(ChainCodeOperations.QUERY_LAYER.getOperationName())
+                    .submit(id);
+
+            return result.length;
         } catch (Exception e) {
             log.error("Error evaluating the contract", e);
             throw e;

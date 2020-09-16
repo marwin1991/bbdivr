@@ -9,16 +9,15 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
-import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.marwin1991.bbdivr.anchore.service.AnchoreLayerAnalyseService;
 import pl.marwin1991.bbdivr.clair.provider.TempDirLocationProvider;
 import pl.marwin1991.bbdivr.clair.service.ClairLayerAnalyseService;
 import pl.marwin1991.bbdivr.client.DockerClientProvider;
 import pl.marwin1991.bbdivr.engine.chaincode.converter.RequestToChainCodeConverter;
 import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
-import pl.marwin1991.bbdivr.model.Layer;
 import pl.marwin1991.bbdivr.model.Manifest;
 import pl.marwin1991.bbdivr.model.ScanResult;
 
@@ -28,7 +27,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -37,7 +35,11 @@ import java.util.stream.Collectors;
 public class ScannerService {
     private final DockerClientProvider dockerClientProvider;
     private final ObjectMapper objectMapper;
-    private final ClairLayerAnalyseService layerAnalyseService;
+
+    private final ClairLayerAnalyseService clairLayerAnalyseService;
+    private final AnchoreLayerAnalyseService anchoreLayerAnalyseService;
+
+
     private final TempDirLocationProvider tempDirLocationProvider;
     private final LayerService layerService;
     private final RequestToChainCodeConverter converter;
@@ -58,18 +60,19 @@ public class ScannerService {
 
             List<String> layerIds = getLayersId(tmpPath);
 
-            ScanResult scanResult = layerAnalyseService.analyse(layerIds);
+            ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
+            ScanResult scanResult2 = anchoreLayerAnalyseService.analyse(imageName, layerIds);
 
-            for (Layer layer : scanResult.getLayers()) {
-                try {
-                    layerService.addLayer(converter.convert(layer));
-                } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
-                    log.error("Failed to add to blockchain", e);
-                    throw e;
-                }
-            }
+//            for (Layer layer : scanResult.getLayers()) {
+//                try {
+//                    layerService.addLayer(converter.convert(layer));
+//                } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
+//                    log.error("Failed to add to blockchain", e);
+//                    throw e;
+//                }
+//            }
 
-            return scanResult;
+            return scanResult1;
         } finally {
             tempDirLocationProvider.removePath(tmpPath);
             FileUtils.deleteDirectory(tmpPath.toFile());

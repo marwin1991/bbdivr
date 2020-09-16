@@ -14,21 +14,21 @@ import java.util.stream.Collectors;
 public class RequestToChainCodeConverter {
 
     public ChainCodeLayer convert(Layer layer) {
-        return ChainCodeLayer.builder()
-                .id(layer.getId())
-                .parentId(layer.getParentId() == null ? "" : layer.getParentId())
-                .vulnerabilityIds(layer.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()))
-                .fixedVulnerabilityIdsFromParents(layer.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()))
-                .build();
+        ChainCodeLayer c = new ChainCodeLayer();
+        c.setId(layer.getId());
+        c.setParentId(layer.getParentId() == null ? "" : layer.getParentId());
+        c.setVulnerabilityIds(layer.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()));
+        c.setFixedVulnerabilityIdsFromParents(layer.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()));
+        return c;
     }
 
-    public ChainCodeLayer convert(AddLayerRequest request) {
-        return ChainCodeLayer.builder()
-                .id(request.getId())
-                .parentId(request.getParentId() == null ? "" : request.getParentId())
-                .vulnerabilityIds(request.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()))
-                .fixedVulnerabilityIdsFromParents(request.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()))
-                .build();
+    public ChainCodeLayer convert(AddLayerRequest layer) {
+        ChainCodeLayer c = new ChainCodeLayer();
+        c.setId(layer.getId());
+        c.setParentId(layer.getParentId() == null ? "" : layer.getParentId());
+        c.setVulnerabilityIds(layer.getVulnerabilities().stream().map(Vulnerability::getId).collect(Collectors.toList()));
+        c.setFixedVulnerabilityIdsFromParents(layer.getFixedVulnerabilitiesFromParents().stream().map(Vulnerability::getId).collect(Collectors.toList()));
+        return c;
     }
 
     private List<ChainCodeVulnerability> convert(List<Vulnerability> vulnerabilities) {
@@ -42,9 +42,9 @@ public class RequestToChainCodeConverter {
     }
 
     private ChainCodeVulnerability convert(Vulnerability v) {
-        return ChainCodeVulnerability.builder()
-                .id(v.getId())
-                .severity(v.getSeverity().getLevel())
-                .build();
+        ChainCodeVulnerability vul = new ChainCodeVulnerability();
+        vul.setId(v.getId());
+
+        return vul;
     }
 }

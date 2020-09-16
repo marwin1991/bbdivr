@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import pl.marwin1991.bbdivr.clair.converter.ScanResultConverter;
+import pl.marwin1991.bbdivr.clair.converter.ClairScanResultConverter;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanData;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanRequest;
 import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
@@ -24,15 +24,15 @@ public class ClairLayerAnalyseService implements LayerAnalyseService {
     private static final String LOCAL_URI_TO_GET_LAYER = "http://host.docker.internal:8080/layers/";
 
 
-    private final ScanResultConverter converter;
+    private final ClairScanResultConverter converter;
 
     @Autowired
-    public ClairLayerAnalyseService(ScanResultConverter converter) {
+    public ClairLayerAnalyseService(ClairScanResultConverter converter) {
         this.converter = converter;
     }
 
     @Override
-    public ScanResult analyse(List<String> layerIds) {
+    public ScanResult analyse(String imageName, List<String> layerIds) {
         for (int i = 0; i < layerIds.size(); i++) {
             log.info("Analyzing " + layerIds.get(i));
 

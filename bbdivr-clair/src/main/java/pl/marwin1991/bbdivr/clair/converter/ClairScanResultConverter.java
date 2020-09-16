@@ -1,9 +1,9 @@
-package pl.marwin1991.bbdivr.anchore.converter;
+package pl.marwin1991.bbdivr.clair.converter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import pl.marwin1991.bbdivr.anchore.model.ClairFeature;
-import pl.marwin1991.bbdivr.anchore.model.ClairLayerScanResponse;
+import pl.marwin1991.bbdivr.clair.model.ClairFeature;
+import pl.marwin1991.bbdivr.clair.model.ClairLayerScanResponse;
 import pl.marwin1991.bbdivr.model.Layer;
 import pl.marwin1991.bbdivr.model.ScanResult;
 import pl.marwin1991.bbdivr.model.Vulnerability;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public class ScanResultConverter {
+public class ClairScanResultConverter {
 
     private static final String SCAN_TOOL_NAME = "Clair";
 

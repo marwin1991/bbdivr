@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface LayerAnalyseService {
 
-    ScanResult analyse(List<String> layerIds);
+    ScanResult analyse(String imageName, List<String> layerIds);
 
 }

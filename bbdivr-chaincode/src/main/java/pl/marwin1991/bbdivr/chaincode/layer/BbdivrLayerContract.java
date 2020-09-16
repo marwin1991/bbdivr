@@ -53,7 +53,7 @@ public final class BbdivrLayerContract implements ContractInterface {
 
     @Transaction()
     public List<ChainCodeLayer> queryLayerWithParents(final Context ctx, final String layerId) {
-        List<ChainCodeLayer> layers = new LinkedList<>();
+        List<ChainCodeLayer> layers = new LinkedList<ChainCodeLayer>();
 
         ChainCodeLayer layer = getExistingLayer(ctx, layerId);
         layers.add(layer);
@@ -133,10 +133,12 @@ public final class BbdivrLayerContract implements ContractInterface {
         final String endKey = "";
         final int pageSizeInt = Integer.parseInt(pageSize) + 1; //increase to get next bookmark
 
-        List<ChainCodeLayer> layers = new LinkedList<>();
+        List<ChainCodeLayer> layers = new LinkedList<ChainCodeLayer>();
         QueryResultsIteratorWithMetadata<KeyValue> results = stub.getStateByRangeWithPagination(startKey, endKey, pageSizeInt, pageId);
 
-        results.forEach(r -> layers.add(jsonConverter.fromJson(r.getStringValue(), ChainCodeLayer.class)));
+        for (KeyValue r : results) {
+            layers.add(jsonConverter.fromJson(r.getStringValue(), ChainCodeLayer.class));
+        }
 
 
         ChainCodePageLayers pageLayers = new ChainCodePageLayers();
@@ -180,7 +182,7 @@ public final class BbdivrLayerContract implements ContractInterface {
                 System.out.println(errorMessage);
                 throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_NOT_FOUND.toString());
             } else {
-                return ChainCodeLayer.builder().build();
+                return new ChainCodeLayer();
             }
         } else {
             if (shouldExists) {

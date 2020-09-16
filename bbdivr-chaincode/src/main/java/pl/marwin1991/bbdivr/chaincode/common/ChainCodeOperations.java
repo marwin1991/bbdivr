@@ -1,10 +1,5 @@
 package pl.marwin1991.bbdivr.chaincode.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
 public enum ChainCodeOperations {
     QUERY_LAYER("queryLayer"),
     QUERY_LAYER_WITH_PARENTS("queryLayerWithParents"),
@@ -18,4 +13,12 @@ public enum ChainCodeOperations {
     ;
 
     private final String operationName;
+
+    ChainCodeOperations(String operationName) {
+        this.operationName = operationName;
+    }
+
+    public String getOperationName() {
+        return operationName;
+    }
 }

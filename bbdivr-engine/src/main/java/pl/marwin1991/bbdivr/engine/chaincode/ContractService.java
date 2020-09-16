@@ -11,8 +11,14 @@ public class ContractService {
     private static final String CHANNEL_NAME = "bbdivr-channel";
     private static final String CONTRACT_NAME = "bbdivr";
 
-    public Contract getContract(Gateway gateway) {
+    public Contract getVulnerabilitiesContract(Gateway gateway) {
         Network network = gateway.getNetwork(CHANNEL_NAME);
-        return network.getContract(CONTRACT_NAME);
+        return network.getContract(CONTRACT_NAME, "bbdivr-vulnerability-contract");
+    }
+
+
+    public Contract getLayersContract(Gateway gateway) {
+        Network network = gateway.getNetwork(CHANNEL_NAME);
+        return network.getContract(CONTRACT_NAME, "bbdivr-layer-contract");
     }
 }
