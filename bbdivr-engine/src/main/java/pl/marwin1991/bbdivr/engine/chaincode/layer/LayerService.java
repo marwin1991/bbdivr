@@ -37,14 +37,11 @@ public class LayerService {
         this.builder = Gateway.createBuilder();
     }
 
-    public ChainCodeLayer addLayer(ChainCodeLayer layer) throws IOException, InterruptedException, TimeoutException, ContractException {
+    public ChainCodeLayer addLayer(ChainCodeLayer layer)
+            throws IOException, InterruptedException, TimeoutException, ContractException {
+
         builder.identity(walletService.getWallet(), APP_USER).networkConfig(networkConfigPath).discovery(true);
         try (Gateway gateway = builder.connect()) {
-
-            String json = layer.toJson();
-
-            byte[] bytes = json.getBytes(StandardCharsets.UTF_8);
-            log.info("bytes.length = " + bytes.length);
 
             byte[] result = contractService.getLayersContract(gateway)
                     .createTransaction(ChainCodeOperations.ADD_LAYER.getOperationName())
