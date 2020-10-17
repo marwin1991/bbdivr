@@ -168,6 +168,8 @@ public final class BbdivrLayerContract implements ContractInterface {
             throw new ChaincodeException(errorMessage, BbdivrChainCodeErrors.LAYER_NOT_FOUND.toString());
         }
 
+
+        //Hello comentarzw javie
         return jsonConverter.fromJson(layerState, ChainCodeLayer.class);
     }
 

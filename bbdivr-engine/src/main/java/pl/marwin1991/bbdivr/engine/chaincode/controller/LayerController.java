@@ -36,7 +36,7 @@ public class LayerController {
     public ResponseEntity<ChainCodeStatus> addLayer(@RequestBody AddLayerRequest request) {
         ChainCodeLayer chainCodeLayer = converter.convert(request);
         try {
-            layerService.addLayer(chainCodeLayer);
+            ChainCodeLayer layer = layerService.addLayer(chainCodeLayer);
             return ResponseEntity.ok(ChainCodeStatus.SUCCESS);
         } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
             log.error("Add layer failed", e);
