@@ -1,0 +1,8 @@
+defreitas/dns-proxy-server:latest
+mongo:4.0.17
+redis:6.0.1
+rabbitmq:3.8.4
+memcached:1.6.3
+yg397/social-network-microservices:latest
+yg397/openresty-thrift:xenial
+yg397/media-frontend:xenial

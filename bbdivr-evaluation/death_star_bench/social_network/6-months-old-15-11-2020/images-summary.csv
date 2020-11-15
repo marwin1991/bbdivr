@@ -1,0 +1,9 @@
+,CRITICAL,HIGH,MEDIUM,LOW,NEGLIGIBLE,UNKNOWN
+defreitas/dns-proxy-server:latest,0,2,8,7,34,18
+mongo:4.0.17,0,0,25,42,25,0
+redis:6.0.1,0,1,6,8,34,17
+rabbitmq:3.8.4,0,0,7,22,11,0
+memcached:1.6.3,0,1,8,8,36,17
+yg397/social-network-microservices:latest,0,11,207,314,50,0
+yg397/openresty-thrift:xenial,0,2,75,247,41,0
+yg397/media-frontend:xenial,0,15,237,421,82,0

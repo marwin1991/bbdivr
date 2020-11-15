@@ -1,0 +1,8 @@
+defreitas/dns-proxy-server & latest & 2020-01-15 \\ \hline 
+mongo & latest & 2020-09-26 \\ \hline 
+redis & latest & 2020-10-27 \\ \hline 
+rabbitmq & latest & 2020-11-06 \\ \hline 
+memcached & latest & 2020-10-30 \\ \hline 
+yg397/social-network-microservices & latest & 2019-08-30 \\ \hline 
+yg397/openresty-thrift & xenial & 2020-04-14 \\ \hline 
+yg397/media-frontend & xenial & 2019-05-01 \\ \hline 

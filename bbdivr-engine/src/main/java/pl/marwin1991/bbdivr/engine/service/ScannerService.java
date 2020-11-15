@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
+import org.hyperledger.fabric.gateway.ContractException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.marwin1991.bbdivr.anchore.service.AnchoreLayerAnalyseService;
@@ -18,16 +19,14 @@ import pl.marwin1991.bbdivr.client.DockerClientProvider;
 import pl.marwin1991.bbdivr.engine.chaincode.converter.RequestToChainCodeConverter;
 import pl.marwin1991.bbdivr.engine.chaincode.layer.LayerService;
 import pl.marwin1991.bbdivr.engine.util.FilesUtils;
-import pl.marwin1991.bbdivr.model.Manifest;
-import pl.marwin1991.bbdivr.model.ScanResult;
-import pl.marwin1991.bbdivr.model.Severity;
-import pl.marwin1991.bbdivr.model.SumScanResult;
+import pl.marwin1991.bbdivr.model.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -61,17 +60,17 @@ public class ScannerService {
 
             List<String> layerIds = getLayersId(tmpPath);
 
-            //ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
+            ScanResult scanResult1 = clairLayerAnalyseService.analyse(imageName, layerIds);
             ScanResult scanResult2 = anchoreLayerAnalyseService.analyse(imageName, layerIds);
 
-//            for (Layer layer : scanResult.getLayers()) {
-//                try {
-//                    layerService.addLayer(converter.convert(layer));
-//                } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
-//                    log.error("Failed to add to blockchain", e);
-//                    throw e;
-//                }
-//            }
+            for (Layer layer : scanResult1.getLayers()) {
+                try {
+                    layerService.addLayer(converter.convert(layer));
+                } catch (IOException | InterruptedException | TimeoutException | ContractException e) {
+                    log.error("Failed to add to blockchain", e);
+                    throw e;
+                }
+            }
 
             return scanResult2;
         } finally {
@@ -119,7 +118,7 @@ public class ScannerService {
 
     @SneakyThrows
     private void printSumToCsv(List<SumScanResult> listOfVul, String image) {
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(image.replace("/", "-").replace(":", "-") + "-results.csv", true)));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("results/" + image.replace("/", "-").replace(":", "-") + "-results.csv", true)));
         // sev_name, clair, anchore, sum
         out.print("sev_name,clair,anchore,sum\n");
         Arrays.stream(Severity.values()).forEach(sev -> {

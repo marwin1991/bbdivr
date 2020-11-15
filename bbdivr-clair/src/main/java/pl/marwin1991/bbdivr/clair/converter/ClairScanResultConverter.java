@@ -100,6 +100,9 @@ public class ClairScanResultConverter {
     private Map<Severity, Set<String>> getVulnerabilities(List<ClairFeature> features) {
         Map<Severity, Set<String>> vulnerabilities = new HashMap<>();
 
+        if(Objects.isNull(features))
+            return vulnerabilities;
+        
         for (ClairFeature f : features) {
             getVulnerabilitiesFromFeature(f).forEach((k, v) -> {
                 if (vulnerabilities.containsKey(k)) {

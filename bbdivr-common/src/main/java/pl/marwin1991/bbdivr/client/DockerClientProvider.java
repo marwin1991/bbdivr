@@ -25,4 +25,19 @@ public class DockerClientProvider {
                 .withDockerCmdExecFactory(dockerCmdExecFactory)
                 .build();
     }
+
+    public DockerClient getClient2() {
+
+        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withDockerCertPath(System.getProperty("user.home") + "/.docker/certs")
+                .withDockerConfig(System.getProperty("user.home") + "/.docker/")
+                .withDockerTlsVerify(true)
+                .withDockerHost("tcp://localhost:2376").build();
+
+        DockerCmdExecFactory dockerCmdExecFactory = new OkHttpDockerCmdExecFactory();
+
+        return DockerClientBuilder.getInstance(config)
+                .withDockerCmdExecFactory(dockerCmdExecFactory)
+                .build();
+    }
 }
