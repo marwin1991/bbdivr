@@ -1,8 +1,17 @@
 defreitas/dns-proxy-server:latest
+defreitas/dns-proxy-server:15-11-2020
+
 mongo:latest
 redis:latest
 rabbitmq:latest
 memcached:latest
+
 yg397/social-network-microservices:latest
+yg397/social-network-microservices:15-11-2020
+
 yg397/openresty-thrift:xenial
+yg397/openresty-thrift:xenial-15-11-2020
+
+
 yg397/media-frontend:xenial
+yg397/media-frontend:xenial-15-11-2020

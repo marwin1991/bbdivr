@@ -1,5 +1,5 @@
-sev_name,clair,anchore,sumC
-RITICAL,0,0,0
+sev_name,clair,anchore,sum
+CRITICAL,0,0,0
 HIGH,0,1,1
 MEDIUM,0,6,6
 LOW,20,0,20

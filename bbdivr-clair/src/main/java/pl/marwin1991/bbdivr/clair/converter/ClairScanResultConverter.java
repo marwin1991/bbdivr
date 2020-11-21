@@ -102,7 +102,7 @@ public class ClairScanResultConverter {
 
         if(Objects.isNull(features))
             return vulnerabilities;
-        
+
         for (ClairFeature f : features) {
             getVulnerabilitiesFromFeature(f).forEach((k, v) -> {
                 if (vulnerabilities.containsKey(k)) {
