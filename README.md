@@ -1,6 +1,9 @@
 # bbdivr (blockchain-based-docker-images-vulnerabilities-registry)
 This is my master thesis project to keep source files, configurations and other important files that was produce during research
 
+## You can read the thesis here: 
+https://github.com/marwin1991/bbdivr/blob/master/bbdivr-thesis.pdf
+
 
 ## installing hyperledger fabric
 
